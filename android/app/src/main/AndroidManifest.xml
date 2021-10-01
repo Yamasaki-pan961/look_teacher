@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.look_teacher">
-   <application
+  <uses-permission android:name="android.permission.BLUETOOTH" />  
+  <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />  
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+  <application
         android:label="look_teacher"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -37,8 +40,5 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-        <uses-permission android:name="android.permission.BLUETOOTH" />  
-	      <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />  
-	      <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     </application>
 </manifest>
