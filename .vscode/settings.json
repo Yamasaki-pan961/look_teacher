@@ -1,0 +1,17 @@
+{
+  "dart.flutterHotReloadOnSave": "always",
+  "dart.hotReloadProgress": "statusBar",
+  "cSpell.words": [
+    "CUAD",
+    "Zeplin",
+    "colorpicker",
+    "figma",
+    "riverpod",
+  ],
+  "[php]": {
+    "cSpell.fixSpellingWithRenameProvider": false
+  },
+  "cSpell.enabledLanguageIds": [
+    "dart",
+  ],
+}
