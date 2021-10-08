@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:look_teacher/tryout/bluetooth_tryout_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,18 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+        child: BluetoothTryoutScreen(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
