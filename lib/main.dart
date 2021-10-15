@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: BluetoothTryoutScreen(),
+        child: DiscoveryPage(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
