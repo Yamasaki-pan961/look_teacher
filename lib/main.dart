@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:look_teacher/Widget/Hello_world_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Scaffold(appBar: AppBar(), body: Center(child: yoko())),
     );
   }
 }
