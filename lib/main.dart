@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:look_teacher/widget/hello_world_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home:
+        Scaffold(appBar: AppBar(), body: HelloWorldWidget() ,)
+     ,
     );
   }
 }
@@ -64,3 +67,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+
