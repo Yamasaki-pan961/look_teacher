@@ -15,20 +15,29 @@ class BluetoothTryoutScreen extends StatelessWidget {
     );
   }
 
-  void _logBluetooth() {
+  Future<void> _logBluetooth() async {
     final FlutterBlue flutterBlue = FlutterBlue.instance;
+
+    flutterBlue.connectedDevices
+        .asStream()
+        .listen((List<BluetoothDevice> devices) {
+      for (BluetoothDevice device in devices) {
+        log('name:${device.name}');
+      }
+    });
 // Start scanning
-    flutterBlue.startScan(timeout: Duration(seconds: 4));
+    await flutterBlue.startScan(timeout: Duration(seconds: 4));
 
 // Listen to scan results
-    var subscription = flutterBlue.scanResults.listen((results) {
+    var subscription = flutterBlue.scanResults.listen((results) async {
       // do something with scan results
-      for (ScanResult r in results) {
-        log('${r.device.name} found! rssi: ${r.rssi}');
-      }
+      results.where((element) => element.advertisementData.connectable).toSet().toList();
+      results.forEach((element) {
+        log('name: ${element.advertisementData.localName}, ${element.advertisementData.serviceUuids}, ${element.device.id}');
+      });
     });
 
 // Stop scanning
-    flutterBlue.stopScan();
+    await flutterBlue.stopScan();
   }
 }
