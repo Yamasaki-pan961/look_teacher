@@ -10,7 +10,8 @@ class HelloWorldWidget extends StatelessWidget {
           'Hello World',
           style: TextStyle(fontSize: 50),
         ),
-        StyledTextWidget(text1: 'aaa', text2: null)
+        StyledTextWidget(text1: 'aaa', text2: null),
+          StyledTextWidget(text1: 'hhh')
       ],
     );
   }
