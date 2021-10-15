@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Widget/hello_world_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Scaffold(appBar: AppBar(),body: HelloWorldWidget(),),
     );
   }
 }
@@ -47,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              'ボタンを押した回数:',
             ),
             Text(
               '$_counter',
@@ -58,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        tooltip: 'Incrementukuda',
         child: Icon(Icons.add),
       ),
     );
