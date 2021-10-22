@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class Button extends StatelessWidget {
+  const Button({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      children: const [
         MainButton(buttonName: 'S'),
         MainButton(buttonName: 'M'),
         MainButton(buttonName: 'E'),
@@ -18,8 +19,7 @@ class Button extends StatelessWidget {
 }
 
 class MainButton extends StatelessWidget {
-  MainButton({required this.buttonName});
-
+  const MainButton({required this.buttonName, Key? key}) : super(key: key);
   final String buttonName;
   @override
   Widget build(BuildContext context) {
