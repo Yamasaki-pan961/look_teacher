@@ -13,7 +13,7 @@ class Yoko extends StatelessWidget {
       children: [
         ElevatedButton(
           onPressed: () {
-            log('pressed s');
+            log('pressed S');
           },
           child: const Text(
             'S',
@@ -21,21 +21,27 @@ class Yoko extends StatelessWidget {
           ),
         ),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            log('pressed M');
+          },
           child: const Text(
             'M',
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
         ),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            log('pressed E');
+          },
           child: const Text(
             'E',
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
         ),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            log('pressed C');
+          },
           child: const Text(
             'C',
             style: TextStyle(color: Colors.white, fontSize: 20),
