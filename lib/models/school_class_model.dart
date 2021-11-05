@@ -5,9 +5,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'school_class_model.freezed.dart';
 
 @freezed
-class SchoolAdminModel with _$SchoolAdminModel {
-  const factory SchoolAdminModel(
+class SchoolClassModel with _$SchoolClassModel {
+  const factory SchoolClassModel(
       {@Default('') String name,
       @Default(<String>[]) List<String> teacherIdList,
-      }) = _SchoolAdminModel;
+      }) = _SchoolClassModel;
 }
