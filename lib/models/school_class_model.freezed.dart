@@ -13,12 +13,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$SchoolAdminModelTearOff {
-  const _$SchoolAdminModelTearOff();
+class _$SchoolClassModelTearOff {
+  const _$SchoolClassModelTearOff();
 
-  _SchoolAdminModel call(
+  _SchoolClassModel call(
       {String name = '', List<String> teacherIdList = const <String>[]}) {
-    return _SchoolAdminModel(
+    return _SchoolClassModel(
       name: name,
       teacherIdList: teacherIdList,
     );
@@ -26,34 +26,34 @@ class _$SchoolAdminModelTearOff {
 }
 
 /// @nodoc
-const $SchoolAdminModel = _$SchoolAdminModelTearOff();
+const $SchoolClassModel = _$SchoolClassModelTearOff();
 
 /// @nodoc
-mixin _$SchoolAdminModel {
+mixin _$SchoolClassModel {
   String get name => throw _privateConstructorUsedError;
   List<String> get teacherIdList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SchoolAdminModelCopyWith<SchoolAdminModel> get copyWith =>
+  $SchoolClassModelCopyWith<SchoolClassModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SchoolAdminModelCopyWith<$Res> {
-  factory $SchoolAdminModelCopyWith(
-          SchoolAdminModel value, $Res Function(SchoolAdminModel) then) =
-      _$SchoolAdminModelCopyWithImpl<$Res>;
+abstract class $SchoolClassModelCopyWith<$Res> {
+  factory $SchoolClassModelCopyWith(
+          SchoolClassModel value, $Res Function(SchoolClassModel) then) =
+      _$SchoolClassModelCopyWithImpl<$Res>;
   $Res call({String name, List<String> teacherIdList});
 }
 
 /// @nodoc
-class _$SchoolAdminModelCopyWithImpl<$Res>
-    implements $SchoolAdminModelCopyWith<$Res> {
-  _$SchoolAdminModelCopyWithImpl(this._value, this._then);
+class _$SchoolClassModelCopyWithImpl<$Res>
+    implements $SchoolClassModelCopyWith<$Res> {
+  _$SchoolClassModelCopyWithImpl(this._value, this._then);
 
-  final SchoolAdminModel _value;
+  final SchoolClassModel _value;
   // ignore: unused_field
-  final $Res Function(SchoolAdminModel) _then;
+  final $Res Function(SchoolClassModel) _then;
 
   @override
   $Res call({
@@ -74,32 +74,32 @@ class _$SchoolAdminModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$SchoolAdminModelCopyWith<$Res>
-    implements $SchoolAdminModelCopyWith<$Res> {
-  factory _$SchoolAdminModelCopyWith(
-          _SchoolAdminModel value, $Res Function(_SchoolAdminModel) then) =
-      __$SchoolAdminModelCopyWithImpl<$Res>;
+abstract class _$SchoolClassModelCopyWith<$Res>
+    implements $SchoolClassModelCopyWith<$Res> {
+  factory _$SchoolClassModelCopyWith(
+          _SchoolClassModel value, $Res Function(_SchoolClassModel) then) =
+      __$SchoolClassModelCopyWithImpl<$Res>;
   @override
   $Res call({String name, List<String> teacherIdList});
 }
 
 /// @nodoc
-class __$SchoolAdminModelCopyWithImpl<$Res>
-    extends _$SchoolAdminModelCopyWithImpl<$Res>
-    implements _$SchoolAdminModelCopyWith<$Res> {
-  __$SchoolAdminModelCopyWithImpl(
-      _SchoolAdminModel _value, $Res Function(_SchoolAdminModel) _then)
-      : super(_value, (v) => _then(v as _SchoolAdminModel));
+class __$SchoolClassModelCopyWithImpl<$Res>
+    extends _$SchoolClassModelCopyWithImpl<$Res>
+    implements _$SchoolClassModelCopyWith<$Res> {
+  __$SchoolClassModelCopyWithImpl(
+      _SchoolClassModel _value, $Res Function(_SchoolClassModel) _then)
+      : super(_value, (v) => _then(v as _SchoolClassModel));
 
   @override
-  _SchoolAdminModel get _value => super._value as _SchoolAdminModel;
+  _SchoolClassModel get _value => super._value as _SchoolClassModel;
 
   @override
   $Res call({
     Object? name = freezed,
     Object? teacherIdList = freezed,
   }) {
-    return _then(_SchoolAdminModel(
+    return _then(_SchoolClassModel(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -114,8 +114,8 @@ class __$SchoolAdminModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SchoolAdminModel implements _SchoolAdminModel {
-  const _$_SchoolAdminModel(
+class _$_SchoolClassModel implements _SchoolClassModel {
+  const _$_SchoolClassModel(
       {this.name = '', this.teacherIdList = const <String>[]});
 
   @JsonKey(defaultValue: '')
@@ -127,13 +127,13 @@ class _$_SchoolAdminModel implements _SchoolAdminModel {
 
   @override
   String toString() {
-    return 'SchoolAdminModel(name: $name, teacherIdList: $teacherIdList)';
+    return 'SchoolClassModel(name: $name, teacherIdList: $teacherIdList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SchoolAdminModel &&
+        (other is _SchoolClassModel &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.teacherIdList, teacherIdList) ||
@@ -149,13 +149,13 @@ class _$_SchoolAdminModel implements _SchoolAdminModel {
 
   @JsonKey(ignore: true)
   @override
-  _$SchoolAdminModelCopyWith<_SchoolAdminModel> get copyWith =>
-      __$SchoolAdminModelCopyWithImpl<_SchoolAdminModel>(this, _$identity);
+  _$SchoolClassModelCopyWith<_SchoolClassModel> get copyWith =>
+      __$SchoolClassModelCopyWithImpl<_SchoolClassModel>(this, _$identity);
 }
 
-abstract class _SchoolAdminModel implements SchoolAdminModel {
-  const factory _SchoolAdminModel({String name, List<String> teacherIdList}) =
-      _$_SchoolAdminModel;
+abstract class _SchoolClassModel implements SchoolClassModel {
+  const factory _SchoolClassModel({String name, List<String> teacherIdList}) =
+      _$_SchoolClassModel;
 
   @override
   String get name => throw _privateConstructorUsedError;
@@ -163,6 +163,6 @@ abstract class _SchoolAdminModel implements SchoolAdminModel {
   List<String> get teacherIdList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SchoolAdminModelCopyWith<_SchoolAdminModel> get copyWith =>
+  _$SchoolClassModelCopyWith<_SchoolClassModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
