@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "950052307876",
+    "project_id": "look-teacher",
+    "storage_bucket": "look-teacher.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950052307876:android:ce36105d8737edf904f731",
+        "android_client_info": {
+          "package_name": "com.example.look_teacher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "950052307876-saeadv38im8hsc2ih1boletntiidj34b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.look_teacher",
+            "certificate_hash": "7366756e6364604e4858e1a25f23a7908d33671f"
+          }
+        },
+        {
+          "client_id": "950052307876-lig13j46j477mkto7fgep6ed0a40tgee.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfhWkI8kdBGzH81kw7GZqVDgQKlufzfw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "950052307876-lig13j46j477mkto7fgep6ed0a40tgee.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
