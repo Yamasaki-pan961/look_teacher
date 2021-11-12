@@ -18,6 +18,7 @@ class TeacherUserModel with _$TeacherUserModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'uid': uid,
+      'name':name,
       'isEnableBluetooth,': isEnableBluetooth,
       'deviceId': deviceId,
       'schoolId': schoolId,
