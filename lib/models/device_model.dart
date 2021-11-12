@@ -11,6 +11,18 @@ class DeviceModel with _$DeviceModel {
     @Default('deviceId') String deviceId,
     @Default('locationName') String locationName,
   }) = _DeviceModel;
+
+  factory DeviceModel.fromMap(Map<String, dynamic> map) {
+    final String deviceName = map['deviceName'] as String;
+    final String deviceId = map['deviceId'] as String;
+    final String locationName = map['locationName'] as String;
+
+    return DeviceModel(
+      deviceName: deviceName,
+      deviceId: deviceId,
+      locationName: locationName
+    );
+  }
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deviceName': deviceName,
