@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
-part of 'user_model.dart';
+part of 'teacher_user_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,10 +13,10 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$UserModelTearOff {
-  const _$UserModelTearOff();
+class _$TeacherUserModelTearOff {
+  const _$TeacherUserModelTearOff();
 
-  _UserModel call(
+  _TeacherUserModel call(
       {required String uid,
       String name = '',
       bool isEnableBluetooth = true,
@@ -24,7 +24,7 @@ class _$UserModelTearOff {
       String schoolId = '',
       bool isAdmin = false,
       List<String> notifications = const <String>[]}) {
-    return _UserModel(
+    return _TeacherUserModel(
       uid: uid,
       name: name,
       isEnableBluetooth: isEnableBluetooth,
@@ -37,10 +37,10 @@ class _$UserModelTearOff {
 }
 
 /// @nodoc
-const $UserModel = _$UserModelTearOff();
+const $TeacherUserModel = _$TeacherUserModelTearOff();
 
 /// @nodoc
-mixin _$UserModel {
+mixin _$TeacherUserModel {
   String get uid => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   bool get isEnableBluetooth => throw _privateConstructorUsedError;
@@ -50,14 +50,15 @@ mixin _$UserModel {
   List<String> get notifications => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $UserModelCopyWith<UserModel> get copyWith =>
+  $TeacherUserModelCopyWith<TeacherUserModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserModelCopyWith<$Res> {
-  factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
-      _$UserModelCopyWithImpl<$Res>;
+abstract class $TeacherUserModelCopyWith<$Res> {
+  factory $TeacherUserModelCopyWith(
+          TeacherUserModel value, $Res Function(TeacherUserModel) then) =
+      _$TeacherUserModelCopyWithImpl<$Res>;
   $Res call(
       {String uid,
       String name,
@@ -69,12 +70,13 @@ abstract class $UserModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
-  _$UserModelCopyWithImpl(this._value, this._then);
+class _$TeacherUserModelCopyWithImpl<$Res>
+    implements $TeacherUserModelCopyWith<$Res> {
+  _$TeacherUserModelCopyWithImpl(this._value, this._then);
 
-  final UserModel _value;
+  final TeacherUserModel _value;
   // ignore: unused_field
-  final $Res Function(UserModel) _then;
+  final $Res Function(TeacherUserModel) _then;
 
   @override
   $Res call({
@@ -120,10 +122,11 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
-  factory _$UserModelCopyWith(
-          _UserModel value, $Res Function(_UserModel) then) =
-      __$UserModelCopyWithImpl<$Res>;
+abstract class _$TeacherUserModelCopyWith<$Res>
+    implements $TeacherUserModelCopyWith<$Res> {
+  factory _$TeacherUserModelCopyWith(
+          _TeacherUserModel value, $Res Function(_TeacherUserModel) then) =
+      __$TeacherUserModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {String uid,
@@ -136,13 +139,15 @@ abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
-    implements _$UserModelCopyWith<$Res> {
-  __$UserModelCopyWithImpl(_UserModel _value, $Res Function(_UserModel) _then)
-      : super(_value, (v) => _then(v as _UserModel));
+class __$TeacherUserModelCopyWithImpl<$Res>
+    extends _$TeacherUserModelCopyWithImpl<$Res>
+    implements _$TeacherUserModelCopyWith<$Res> {
+  __$TeacherUserModelCopyWithImpl(
+      _TeacherUserModel _value, $Res Function(_TeacherUserModel) _then)
+      : super(_value, (v) => _then(v as _TeacherUserModel));
 
   @override
-  _UserModel get _value => super._value as _UserModel;
+  _TeacherUserModel get _value => super._value as _TeacherUserModel;
 
   @override
   $Res call({
@@ -154,7 +159,7 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? isAdmin = freezed,
     Object? notifications = freezed,
   }) {
-    return _then(_UserModel(
+    return _then(_TeacherUserModel(
       uid: uid == freezed
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -189,8 +194,8 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UserModel implements _UserModel {
-  const _$_UserModel(
+class _$_TeacherUserModel implements _TeacherUserModel {
+  const _$_TeacherUserModel(
       {required this.uid,
       this.name = '',
       this.isEnableBluetooth = true,
@@ -222,13 +227,13 @@ class _$_UserModel implements _UserModel {
 
   @override
   String toString() {
-    return 'UserModel(uid: $uid, name: $name, isEnableBluetooth: $isEnableBluetooth, deviceId: $deviceId, schoolId: $schoolId, isAdmin: $isAdmin, notifications: $notifications)';
+    return 'TeacherUserModel(uid: $uid, name: $name, isEnableBluetooth: $isEnableBluetooth, deviceId: $deviceId, schoolId: $schoolId, isAdmin: $isAdmin, notifications: $notifications)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _UserModel &&
+        (other is _TeacherUserModel &&
             (identical(other.uid, uid) ||
                 const DeepCollectionEquality().equals(other.uid, uid)) &&
             (identical(other.name, name) ||
@@ -263,19 +268,19 @@ class _$_UserModel implements _UserModel {
 
   @JsonKey(ignore: true)
   @override
-  _$UserModelCopyWith<_UserModel> get copyWith =>
-      __$UserModelCopyWithImpl<_UserModel>(this, _$identity);
+  _$TeacherUserModelCopyWith<_TeacherUserModel> get copyWith =>
+      __$TeacherUserModelCopyWithImpl<_TeacherUserModel>(this, _$identity);
 }
 
-abstract class _UserModel implements UserModel {
-  const factory _UserModel(
+abstract class _TeacherUserModel implements TeacherUserModel {
+  const factory _TeacherUserModel(
       {required String uid,
       String name,
       bool isEnableBluetooth,
       String deviceId,
       String schoolId,
       bool isAdmin,
-      List<String> notifications}) = _$_UserModel;
+      List<String> notifications}) = _$_TeacherUserModel;
 
   @override
   String get uid => throw _privateConstructorUsedError;
@@ -293,6 +298,6 @@ abstract class _UserModel implements UserModel {
   List<String> get notifications => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserModelCopyWith<_UserModel> get copyWith =>
+  _$TeacherUserModelCopyWith<_TeacherUserModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

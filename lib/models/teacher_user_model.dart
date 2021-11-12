@@ -2,11 +2,11 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'user_model.freezed.dart';
+part 'teacher_user_model.freezed.dart';
 
 @freezed
-class UserModel with _$UserModel {
-  const factory UserModel({
+class TeacherUserModel with _$TeacherUserModel {
+  const factory TeacherUserModel({
     required String uid,
     @Default('') String name,
     @Default(true) bool isEnableBluetooth,
@@ -14,5 +14,5 @@ class UserModel with _$UserModel {
     @Default('') String schoolId,
     @Default(false) bool isAdmin,
     @Default(<String>[]) List<String> notifications,
-  }) = _UserModel;
+  }) = _TeacherUserModel;
 }
