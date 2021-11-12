@@ -10,4 +10,7 @@ class SchoolClassModel with _$SchoolClassModel {
       {@Default('') String name,
       @Default(<String>[]) List<String> teacherIdList,
       }) = _SchoolClassModel;
+        Map<String, dynamic> toMap() {
+    return <String, dynamic>{'name':name,'teacherIdList':teacherIdList};
+  }
 }
