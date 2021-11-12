@@ -194,7 +194,7 @@ class __$TeacherUserModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TeacherUserModel implements _TeacherUserModel {
+class _$_TeacherUserModel extends _TeacherUserModel {
   const _$_TeacherUserModel(
       {required this.uid,
       this.name = '',
@@ -202,7 +202,8 @@ class _$_TeacherUserModel implements _TeacherUserModel {
       this.deviceId = '',
       this.schoolId = '',
       this.isAdmin = false,
-      this.notifications = const <String>[]});
+      this.notifications = const <String>[]})
+      : super._();
 
   @override
   final String uid;
@@ -272,7 +273,7 @@ class _$_TeacherUserModel implements _TeacherUserModel {
       __$TeacherUserModelCopyWithImpl<_TeacherUserModel>(this, _$identity);
 }
 
-abstract class _TeacherUserModel implements TeacherUserModel {
+abstract class _TeacherUserModel extends TeacherUserModel {
   const factory _TeacherUserModel(
       {required String uid,
       String name,
@@ -281,6 +282,7 @@ abstract class _TeacherUserModel implements TeacherUserModel {
       String schoolId,
       bool isAdmin,
       List<String> notifications}) = _$_TeacherUserModel;
+  const _TeacherUserModel._() : super._();
 
   @override
   String get uid => throw _privateConstructorUsedError;

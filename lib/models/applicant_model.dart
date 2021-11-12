@@ -11,6 +11,14 @@ class ApplicantModel with _$ApplicantModel {
     @Default('') String message,
   }) = _ApplicantModel;
 
+  factory ApplicantModel.fromMap(Map<String, dynamic> map) {
+    final String teacherId = map['teacherId'] as String;
+    final String message = map['message'] as String;
+    return ApplicantModel(teacherId: teacherId, message: message);
+  }
+
+  const ApplicantModel._();
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{'teacherId': teacherId, 'message': message};
   }
