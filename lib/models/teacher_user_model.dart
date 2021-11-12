@@ -28,16 +28,18 @@ class TeacherUserModel with _$TeacherUserModel {
       final List<String> notifications = field['notifications'] as List<String>;
 
       return TeacherUserModel(
-        uid: uid,
-        isEnableBluetooth: isEnableBluetooth,
-        deviceId: deviceId,
-        schoolId: schoolId,
-        isAdmin: isAdmin,
-        notifications: notifications
-      );
+          uid: uid,
+          isEnableBluetooth: isEnableBluetooth,
+          deviceId: deviceId,
+          schoolId: schoolId,
+          isAdmin: isAdmin,
+          notifications: notifications);
     }
     return const TeacherUserModel(uid: '');
   }
+
+  const TeacherUserModel._();
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'uid': uid,

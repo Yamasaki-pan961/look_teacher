@@ -163,13 +163,14 @@ class __$SchoolModelCopyWithImpl<$Res> extends _$SchoolModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SchoolModel implements _SchoolModel {
+class _$_SchoolModel extends _SchoolModel {
   const _$_SchoolModel(
       {this.schoolId = '',
       this.adminId = '',
       this.deviceList = const <DeviceModel>[],
       this.applicantList = const <ApplicantModel>[],
-      this.schoolClassList = const <SchoolClassModel>[]});
+      this.schoolClassList = const <SchoolClassModel>[]})
+      : super._();
 
   @JsonKey(defaultValue: '')
   @override
@@ -228,13 +229,14 @@ class _$_SchoolModel implements _SchoolModel {
       __$SchoolModelCopyWithImpl<_SchoolModel>(this, _$identity);
 }
 
-abstract class _SchoolModel implements SchoolModel {
+abstract class _SchoolModel extends SchoolModel {
   const factory _SchoolModel(
       {String schoolId,
       String adminId,
       List<DeviceModel> deviceList,
       List<ApplicantModel> applicantList,
       List<SchoolClassModel> schoolClassList}) = _$_SchoolModel;
+  const _SchoolModel._() : super._();
 
   @override
   String get schoolId => throw _privateConstructorUsedError;
