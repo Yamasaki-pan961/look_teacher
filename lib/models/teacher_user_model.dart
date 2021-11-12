@@ -23,7 +23,7 @@ class TeacherUserModel with _$TeacherUserModel {
       final String uid = field['uid'] as String;
       final bool isEnableBluetooth = field['isEnableBluetooth'] as bool;
       final String deviceId = field['deviceId'] as String;
-      final String schoolID = field['schoolId'] as String;
+      final String schoolId = field['schoolId'] as String;
       final bool isAdmin = field['isAdmin'] as bool;
       final List<String> notifications = field['notifications'] as List<String>;
 
@@ -31,7 +31,7 @@ class TeacherUserModel with _$TeacherUserModel {
         uid: uid,
         isEnableBluetooth: isEnableBluetooth,
         deviceId: deviceId,
-        schoolId: schoolID,
+        schoolId: schoolId,
         isAdmin: isAdmin,
         notifications: notifications
       );
