@@ -113,8 +113,8 @@ class __$ApplicantModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ApplicantModel implements _ApplicantModel {
-  const _$_ApplicantModel({this.teacherId = '', this.message = ''});
+class _$_ApplicantModel extends _ApplicantModel {
+  const _$_ApplicantModel({this.teacherId = '', this.message = ''}) : super._();
 
   @JsonKey(defaultValue: '')
   @override
@@ -151,9 +151,10 @@ class _$_ApplicantModel implements _ApplicantModel {
       __$ApplicantModelCopyWithImpl<_ApplicantModel>(this, _$identity);
 }
 
-abstract class _ApplicantModel implements ApplicantModel {
+abstract class _ApplicantModel extends ApplicantModel {
   const factory _ApplicantModel({String teacherId, String message}) =
       _$_ApplicantModel;
+  const _ApplicantModel._() : super._();
 
   @override
   String get teacherId => throw _privateConstructorUsedError;

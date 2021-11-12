@@ -126,11 +126,12 @@ class __$DeviceModelCopyWithImpl<$Res> extends _$DeviceModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DeviceModel implements _DeviceModel {
+class _$_DeviceModel extends _DeviceModel {
   const _$_DeviceModel(
       {this.deviceName = 'deviceName',
       this.deviceId = 'deviceId',
-      this.locationName = 'locationName'});
+      this.locationName = 'locationName'})
+      : super._();
 
   @JsonKey(defaultValue: 'deviceName')
   @override
@@ -175,11 +176,12 @@ class _$_DeviceModel implements _DeviceModel {
       __$DeviceModelCopyWithImpl<_DeviceModel>(this, _$identity);
 }
 
-abstract class _DeviceModel implements DeviceModel {
+abstract class _DeviceModel extends DeviceModel {
   const factory _DeviceModel(
       {String deviceName,
       String deviceId,
       String locationName}) = _$_DeviceModel;
+  const _DeviceModel._() : super._();
 
   @override
   String get deviceName => throw _privateConstructorUsedError;

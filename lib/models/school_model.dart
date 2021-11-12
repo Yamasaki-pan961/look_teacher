@@ -23,12 +23,20 @@ class SchoolModel with _$SchoolModel {
     if (field != null) {
       final String schoolId = field['schoolId'] as String;
       final String adminId = field['adminId'] as String;
+
+      final deviceMapList = field['deviceList'] as List<Map<String, dynamic>>;
       final List<DeviceModel> deviceList =
-          field['deviceList'] as List<DeviceModel>;
+          deviceMapList.map((e) => DeviceModel.fromMap(e)).toList();
+
+      final applicantMapList =
+          field['applicantList'] as List<Map<String, dynamic>>;
       final List<ApplicantModel> applicantList =
-          field['applicantList'] as List<ApplicantModel>;
+          applicantMapList.map((e) => ApplicantModel.fromMap(e)).toList();
+
+      final schoolClassMapList =
+          field['schoolClassList'] as List<Map<String, dynamic>>;
       final List<SchoolClassModel> schoolClassList =
-          field['schoolClassList'] as List<SchoolClassModel>;
+          schoolClassMapList.map((e) => SchoolClassModel.fromMap(e)).toList();
 
       return SchoolModel(
           schoolId: schoolId,
@@ -39,6 +47,8 @@ class SchoolModel with _$SchoolModel {
     }
     return const SchoolModel();
   }
+
+  const SchoolModel._();
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

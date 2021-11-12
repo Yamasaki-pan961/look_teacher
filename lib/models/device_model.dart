@@ -23,6 +23,9 @@ class DeviceModel with _$DeviceModel {
       locationName: locationName
     );
   }
+
+    const DeviceModel._();
+  
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deviceName': deviceName,

@@ -17,6 +17,8 @@ class SchoolClassModel with _$SchoolClassModel {
     return SchoolClassModel(name: name, teacherIdList: teacherIdList);
   }
 
+  const SchoolClassModel._();
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{'name': name, 'teacherIdList': teacherIdList};
   }

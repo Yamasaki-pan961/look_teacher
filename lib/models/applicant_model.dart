@@ -16,6 +16,9 @@ class ApplicantModel with _$ApplicantModel {
     final String message = map['message'] as String;
     return ApplicantModel(teacherId: teacherId, message: message);
   }
+
+  const ApplicantModel._();
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{'teacherId': teacherId, 'message': message};
   }
