@@ -16,4 +16,13 @@ class SchoolModel with _$SchoolModel {
     @Default(<ApplicantModel>[]) List<ApplicantModel> applicantList,
     @Default(<SchoolClassModel>[]) List<SchoolClassModel> schoolClassList,
   }) = _SchoolModel;
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'schoolId': schoolId,
+      'adminId': adminId,
+      'deviceList': deviceList.map((element) => element.toMap()).toList(),
+      'applicantList': applicantList.map((element) => element.toMap()).toList(),
+      'schoolClassList': schoolClassList.map((element) => element.toMap()).toList()
+    };
+  }
 }

@@ -10,4 +10,8 @@ class ApplicantModel with _$ApplicantModel {
     @Default('') String teacherId,
     @Default('') String message,
   }) = _ApplicantModel;
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{'teacherId': teacherId, 'message': message};
+  }
 }

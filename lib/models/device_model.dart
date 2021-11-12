@@ -11,4 +11,11 @@ class DeviceModel with _$DeviceModel {
     @Default('deviceId') String deviceId,
     @Default('locationName') String locationName,
   }) = _DeviceModel;
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'deviceName': deviceName,
+      'deviceId': deviceId,
+      'locationName': locationName
+    };
+  }
 }
