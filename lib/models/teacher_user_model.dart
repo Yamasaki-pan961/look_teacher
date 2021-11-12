@@ -15,4 +15,15 @@ class TeacherUserModel with _$TeacherUserModel {
     @Default(false) bool isAdmin,
     @Default(<String>[]) List<String> notifications,
   }) = _TeacherUserModel;
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'uid': uid,
+      'name':name,
+      'isEnableBluetooth,': isEnableBluetooth,
+      'deviceId': deviceId,
+      'schoolId': schoolId,
+      'isAdmin': isAdmin,
+      'notifications': notifications
+    };
+  }
 }
