@@ -17,7 +17,7 @@ class TeacherUserModel with _$TeacherUserModel {
     @Default(<String>[]) List<String> notifications,
   }) = _TeacherUserModel;
 
-  factory TeacherUserModel.fromDoc(QueryDocumentSnapshot<Object?> doc) {
+  factory TeacherUserModel.fromDoc(DocumentSnapshot<Object?> doc) {
     final field = doc.data() as Map<String, dynamic>?;
     if (field != null) {
       final String uid = field['uid'] as String;
