@@ -44,7 +44,7 @@ class TeacherUserModel with _$TeacherUserModel {
     return <String, dynamic>{
       'uid': uid,
       'name': name,
-      'isEnableBluetooth,': isEnableBluetooth,
+      'isEnableBluetooth': isEnableBluetooth,
       'deviceId': deviceId,
       'schoolId': schoolId,
       'isAdmin': isAdmin,
