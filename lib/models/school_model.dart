@@ -34,7 +34,7 @@ class SchoolModel with _$SchoolModel {
           applicantMapList.map((e) => ApplicantModel.fromMap(e)).toList();
 
       final schoolClassMapList =
-          field['schoolClassList'] as List<Map<String, dynamic>>;
+          (field['schoolClassList'] as List).cast<Map<String, dynamic>>();
       final List<SchoolClassModel> schoolClassList =
           schoolClassMapList.map((e) => SchoolClassModel.fromMap(e)).toList();
 
