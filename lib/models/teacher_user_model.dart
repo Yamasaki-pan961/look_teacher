@@ -25,7 +25,7 @@ class TeacherUserModel with _$TeacherUserModel {
       final String deviceId = field['deviceId'] as String;
       final String schoolId = field['schoolId'] as String;
       final bool isAdmin = field['isAdmin'] as bool;
-      final List<String> notifications = field['notifications'] as List<String>;
+      final List<String> notifications = (field['notifications'] as List).cast<String>();
 
       return TeacherUserModel(
           uid: uid,
