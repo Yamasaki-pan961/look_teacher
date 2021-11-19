@@ -28,12 +28,12 @@ class SchoolModel with _$SchoolModel {
       final String adminId = field['adminId'] as String;
 
       final deviceMapList =
-          (field['deviceMapList'] as List).cast<Map<String, dynamic>>();
+          (field['deviceList'] as List).cast<Map<String, dynamic>>();
       final List<DeviceModel> deviceList =
           deviceMapList.map((e) => DeviceModel.fromMap(e)).toList();
 
       final applicantMapList =
-          (field['applicantMapList'] as List).cast<Map<String, dynamic>>();
+          (field['applicantList'] as List).cast<Map<String, dynamic>>();
       final List<ApplicantModel> applicantList =
           applicantMapList.map((e) => ApplicantModel.fromMap(e)).toList();
 
