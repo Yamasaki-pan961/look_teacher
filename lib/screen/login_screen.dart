@@ -6,6 +6,37 @@ class LoginScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('ユーザーログイン'),
+        centerTitle: true,
+      ),
+      body:
+      Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Center(
+          child: Form(child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              TextFormField(
+                decoration: const InputDecoration(
+                  hintText: 'Enter your email',
+                )
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  hintText: 'Enter your password',
+                )
+              ),
+              ElevatedButton(
+                onPressed:(){},
+                child: const Text('ログイン'),
+              )
+            ]
+           )
+          ),
+        ),
+      )
+    );
   }
 }
