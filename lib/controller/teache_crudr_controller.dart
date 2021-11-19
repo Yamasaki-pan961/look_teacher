@@ -1,8 +1,8 @@
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class FirestorePersonalCRUDController {
-  FirestorePersonalCRUDController({required this.targetCollectionName}) {
+class TeacherCRUDController {
+  TeacherCRUDController({required this.targetCollectionName}) {
     targetCollectionReference = FirebaseFirestore.instance.collection('users');
   }
 
