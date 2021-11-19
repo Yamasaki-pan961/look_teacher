@@ -17,12 +17,14 @@ class _$SchoolModelTearOff {
   const _$SchoolModelTearOff();
 
   _SchoolModel call(
-      {String schoolId = '',
+      {String schoolName = '',
+      String schoolId = '',
       String adminId = '',
       List<DeviceModel> deviceList = const <DeviceModel>[],
       List<ApplicantModel> applicantList = const <ApplicantModel>[],
       List<SchoolClassModel> schoolClassList = const <SchoolClassModel>[]}) {
     return _SchoolModel(
+      schoolName: schoolName,
       schoolId: schoolId,
       adminId: adminId,
       deviceList: deviceList,
@@ -37,6 +39,7 @@ const $SchoolModel = _$SchoolModelTearOff();
 
 /// @nodoc
 mixin _$SchoolModel {
+  String get schoolName => throw _privateConstructorUsedError;
   String get schoolId => throw _privateConstructorUsedError;
   String get adminId => throw _privateConstructorUsedError;
   List<DeviceModel> get deviceList => throw _privateConstructorUsedError;
@@ -55,7 +58,8 @@ abstract class $SchoolModelCopyWith<$Res> {
           SchoolModel value, $Res Function(SchoolModel) then) =
       _$SchoolModelCopyWithImpl<$Res>;
   $Res call(
-      {String schoolId,
+      {String schoolName,
+      String schoolId,
       String adminId,
       List<DeviceModel> deviceList,
       List<ApplicantModel> applicantList,
@@ -72,6 +76,7 @@ class _$SchoolModelCopyWithImpl<$Res> implements $SchoolModelCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? schoolName = freezed,
     Object? schoolId = freezed,
     Object? adminId = freezed,
     Object? deviceList = freezed,
@@ -79,6 +84,10 @@ class _$SchoolModelCopyWithImpl<$Res> implements $SchoolModelCopyWith<$Res> {
     Object? schoolClassList = freezed,
   }) {
     return _then(_value.copyWith(
+      schoolName: schoolName == freezed
+          ? _value.schoolName
+          : schoolName // ignore: cast_nullable_to_non_nullable
+              as String,
       schoolId: schoolId == freezed
           ? _value.schoolId
           : schoolId // ignore: cast_nullable_to_non_nullable
@@ -111,7 +120,8 @@ abstract class _$SchoolModelCopyWith<$Res>
       __$SchoolModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String schoolId,
+      {String schoolName,
+      String schoolId,
       String adminId,
       List<DeviceModel> deviceList,
       List<ApplicantModel> applicantList,
@@ -130,6 +140,7 @@ class __$SchoolModelCopyWithImpl<$Res> extends _$SchoolModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? schoolName = freezed,
     Object? schoolId = freezed,
     Object? adminId = freezed,
     Object? deviceList = freezed,
@@ -137,6 +148,10 @@ class __$SchoolModelCopyWithImpl<$Res> extends _$SchoolModelCopyWithImpl<$Res>
     Object? schoolClassList = freezed,
   }) {
     return _then(_SchoolModel(
+      schoolName: schoolName == freezed
+          ? _value.schoolName
+          : schoolName // ignore: cast_nullable_to_non_nullable
+              as String,
       schoolId: schoolId == freezed
           ? _value.schoolId
           : schoolId // ignore: cast_nullable_to_non_nullable
@@ -165,13 +180,17 @@ class __$SchoolModelCopyWithImpl<$Res> extends _$SchoolModelCopyWithImpl<$Res>
 
 class _$_SchoolModel extends _SchoolModel {
   const _$_SchoolModel(
-      {this.schoolId = '',
+      {this.schoolName = '',
+      this.schoolId = '',
       this.adminId = '',
       this.deviceList = const <DeviceModel>[],
       this.applicantList = const <ApplicantModel>[],
       this.schoolClassList = const <SchoolClassModel>[]})
       : super._();
 
+  @JsonKey(defaultValue: '')
+  @override
+  final String schoolName;
   @JsonKey(defaultValue: '')
   @override
   final String schoolId;
@@ -190,13 +209,16 @@ class _$_SchoolModel extends _SchoolModel {
 
   @override
   String toString() {
-    return 'SchoolModel(schoolId: $schoolId, adminId: $adminId, deviceList: $deviceList, applicantList: $applicantList, schoolClassList: $schoolClassList)';
+    return 'SchoolModel(schoolName: $schoolName, schoolId: $schoolId, adminId: $adminId, deviceList: $deviceList, applicantList: $applicantList, schoolClassList: $schoolClassList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _SchoolModel &&
+            (identical(other.schoolName, schoolName) ||
+                const DeepCollectionEquality()
+                    .equals(other.schoolName, schoolName)) &&
             (identical(other.schoolId, schoolId) ||
                 const DeepCollectionEquality()
                     .equals(other.schoolId, schoolId)) &&
@@ -217,6 +239,7 @@ class _$_SchoolModel extends _SchoolModel {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(schoolName) ^
       const DeepCollectionEquality().hash(schoolId) ^
       const DeepCollectionEquality().hash(adminId) ^
       const DeepCollectionEquality().hash(deviceList) ^
@@ -231,13 +254,16 @@ class _$_SchoolModel extends _SchoolModel {
 
 abstract class _SchoolModel extends SchoolModel {
   const factory _SchoolModel(
-      {String schoolId,
+      {String schoolName,
+      String schoolId,
       String adminId,
       List<DeviceModel> deviceList,
       List<ApplicantModel> applicantList,
       List<SchoolClassModel> schoolClassList}) = _$_SchoolModel;
   const _SchoolModel._() : super._();
 
+  @override
+  String get schoolName => throw _privateConstructorUsedError;
   @override
   String get schoolId => throw _privateConstructorUsedError;
   @override
