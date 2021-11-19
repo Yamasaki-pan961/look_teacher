@@ -13,7 +13,7 @@ class LoginScreen extends HookWidget {
       ),
       body:
       Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20),
         child: Center(
           child: Form(child: Column(
             mainAxisSize: MainAxisSize.min,
