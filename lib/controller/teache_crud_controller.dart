@@ -2,12 +2,12 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TeacherCRUDController {
-  TeacherCRUDController({required this.targetCollectionName}) {
-    targetCollectionReference = FirebaseFirestore.instance.collection('users');
+  TeacherCRUDController() {
+    targetCollectionReference = FirebaseFirestore.instance.collection(targetCollectionName);
   }
 
   static const timeLimit = Duration(seconds: 3);
-  final String targetCollectionName;
+  final String targetCollectionName = 'users';
   late final CollectionReference targetCollectionReference;
 
   Future<String?> createRecord(
