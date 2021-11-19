@@ -31,6 +31,7 @@ dependencies:
   flutter_hooks: ^0.17.0
   freezed_annotation: ^0.14.2
   hooks_riverpod: ^0.14.0+4
+  workmanager: ^0.4.1
 
 
 
