@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-class LoginScreen extends HookWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class MakeUserScreen extends HookWidget {
+  const MakeUserScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ユーザーログイン'),
+        title: const Text('ユーザー登録'),
         centerTitle: true,
       ),
       body:
@@ -28,9 +28,14 @@ class LoginScreen extends HookWidget {
                   hintText: 'Enter your password',
                 )
               ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  hintText: 'Enter the password again',
+                )
+              ),
               ElevatedButton(
                 onPressed:(){},
-                child: const Text('ログイン'),
+                child: const Text('登録'),
               )
             ]
            )
