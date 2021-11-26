@@ -11,6 +11,7 @@ part 'school_model.freezed.dart';
 @freezed
 class SchoolModel with _$SchoolModel {
   const factory SchoolModel({
+    @Default('') String schoolName,
     @Default('') String schoolId,
     @Default('') String adminId,
     @Default(<DeviceModel>[]) List<DeviceModel> deviceList,
@@ -21,24 +22,28 @@ class SchoolModel with _$SchoolModel {
   factory SchoolModel.fromDoc(DocumentSnapshot<Object?> doc) {
     final field = doc.data() as Map<String, dynamic>?;
     if (field != null) {
+      final String schoolName = field['schoolName'] as String;
+
       final String schoolId = field['schoolId'] as String;
       final String adminId = field['adminId'] as String;
 
-      final deviceMapList = field['deviceList'] as List<Map<String, dynamic>>;
+      final deviceMapList =
+          (field['deviceList'] as List).cast<Map<String, dynamic>>();
       final List<DeviceModel> deviceList =
           deviceMapList.map((e) => DeviceModel.fromMap(e)).toList();
 
       final applicantMapList =
-          field['applicantList'] as List<Map<String, dynamic>>;
+          (field['applicantList'] as List).cast<Map<String, dynamic>>();
       final List<ApplicantModel> applicantList =
           applicantMapList.map((e) => ApplicantModel.fromMap(e)).toList();
 
       final schoolClassMapList =
-          field['schoolClassList'] as List<Map<String, dynamic>>;
+          (field['schoolClassList'] as List).cast<Map<String, dynamic>>();
       final List<SchoolClassModel> schoolClassList =
           schoolClassMapList.map((e) => SchoolClassModel.fromMap(e)).toList();
 
       return SchoolModel(
+          schoolName: schoolName,
           schoolId: schoolId,
           adminId: adminId,
           deviceList: deviceList,
@@ -52,6 +57,7 @@ class SchoolModel with _$SchoolModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'schoolName':schoolName,
       'schoolId': schoolId,
       'adminId': adminId,
       'deviceList': deviceList.map((element) => element.toMap()).toList(),

@@ -27,9 +27,12 @@ dependencies:
   firebase_core: "^1.2.1"
   flutter:
     sdk: flutter
+  flutter_blue: ^0.8.0
   flutter_hooks: ^0.17.0
   freezed_annotation: ^0.14.2
   hooks_riverpod: ^0.14.0+4
+  shared_preferences: ^2.0.8
+  workmanager: ^0.4.1
 
 
 
