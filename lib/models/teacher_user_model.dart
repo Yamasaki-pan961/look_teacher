@@ -21,14 +21,17 @@ class TeacherUserModel with _$TeacherUserModel {
     final field = doc.data() as Map<String, dynamic>?;
     if (field != null) {
       final String uid = field['uid'] as String;
+      final String name = field['name'] as String;
       final bool isEnableBluetooth = field['isEnableBluetooth'] as bool;
       final String deviceId = field['deviceId'] as String;
       final String schoolId = field['schoolId'] as String;
       final bool isAdmin = field['isAdmin'] as bool;
-      final List<String> notifications = (field['notifications'] as List).cast<String>();
+      final List<String> notifications =
+          (field['notifications'] as List).cast<String>();
 
       return TeacherUserModel(
           uid: uid,
+          name: name,
           isEnableBluetooth: isEnableBluetooth,
           deviceId: deviceId,
           schoolId: schoolId,
