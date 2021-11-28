@@ -7,6 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:look_teacher/logic/background_process.dart';
 import 'package:look_teacher/logic/bluetooth_scan.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,15 +41,20 @@ Future<void> main() async {
   await BackgroundProcess().periodic(
       interval: const Duration(seconds: 20),
       function: (Timer t) async {
-        final nearestDevice = await getNearestDeviceId(['DC:0D:30:03:52:73']);
-        await AwesomeNotifications().createNotification(
-            content: NotificationContent(
-          id: 10,
-          channelKey: 'basic_channel',
-          title: 'Scanning Result',
-          body: nearestDevice.toString(),
-          fullScreenIntent: true,
-        ));
+        final preference = await SharedPreferences.getInstance();
+        final filterIdList = preference.getStringList('filterIdList');
+        if (filterIdList != null) {
+          final nearestDevice = await getNearestDeviceId(filterIdList);
+          await AwesomeNotifications().createNotification(
+              content: NotificationContent(
+            id: 10,
+            channelKey: 'basic_channel',
+            title: 'Scanning Result',
+            body: nearestDevice.toString(),
+            fullScreenIntent: true,
+          ));
+        }
+        log('filterIdList not found');
       });
   runApp(const MyApp());
 }
@@ -110,14 +116,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await AwesomeNotifications().createNotification(
-              content: NotificationContent(
-            id: 10,
-            channelKey: 'basic_channel',
-            title: 'Simple Notification',
-            body: 'Simple body',
-            fullScreenIntent: true,
-          ));
+          final preference = await SharedPreferences.getInstance();
+          await preference.clear();
         },
         tooltip: 'Increment',
         child: Icon(Icons.add),
