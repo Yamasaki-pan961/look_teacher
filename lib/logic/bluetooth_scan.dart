@@ -19,7 +19,6 @@ Future<Map<BluetoothDevice, int>?> bluetoothScan() async {
 // Stop scanning
     await flutterBlue.stopScan();
     log('stop scan');
-    log(deviceMap.toString());
     return deviceMap;
   } else {
     log('scanning another. Did not scan');
