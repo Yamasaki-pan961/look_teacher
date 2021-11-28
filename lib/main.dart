@@ -1,10 +1,55 @@
+import 'dart:async';
+import 'dart:developer';
+
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:look_teacher/logic/background_process.dart';
+import 'package:look_teacher/logic/bluetooth_scan.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await AwesomeNotifications().initialize(
+      // set the icon to null if you want to use the default app icon
+      null,
+      [
+        NotificationChannel(
+          channelGroupKey: 'basic_channel_group',
+          channelKey: 'basic_channel',
+          channelName: 'Basic notifications',
+          channelDescription: 'Notification channel for basic tests',
+          defaultColor: Color(0xFF9D50DD),
+          ledColor: Colors.white,
+          importance: NotificationImportance.Max,
+        ),
+      ],
+      // Channel groups are only visual and are not required
+      channelGroups: [
+        NotificationChannelGroup(
+            channelGroupkey: 'basic_channel_group',
+            channelGroupName: 'Basic group')
+      ],
+      debug: true);
+  if (!await AwesomeNotifications().isNotificationAllowed()) {
+    await AwesomeNotifications()
+        .requestPermissionToSendNotifications(channelKey: 'basic_channel');
+  }
+
+  await BackgroundProcess().periodic(
+      interval: const Duration(seconds: 20),
+      function: (Timer t) async {
+        final nearestDevice = await getNearestDeviceId(['DC:0D:30:03:52:73']);
+        await AwesomeNotifications().createNotification(
+            content: NotificationContent(
+          id: 10,
+          channelKey: 'basic_channel',
+          title: 'Scanning Result',
+          body: nearestDevice.toString(),
+          fullScreenIntent: true,
+        ));
+      });
   runApp(const MyApp());
 }
 
@@ -64,7 +109,16 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () async {
+          await AwesomeNotifications().createNotification(
+              content: NotificationContent(
+            id: 10,
+            channelKey: 'basic_channel',
+            title: 'Simple Notification',
+            body: 'Simple body',
+            fullScreenIntent: true,
+          ));
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
