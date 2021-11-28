@@ -53,8 +53,9 @@ Future<void> main() async {
             body: nearestDevice.toString(),
             fullScreenIntent: true,
           ));
+        }else{
+          log('filterIdList not found');
         }
-        log('filterIdList not found');
       });
   runApp(const MyApp());
 }
@@ -116,8 +117,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
+          log((await bluetoothScan()).toString());
           final preference = await SharedPreferences.getInstance();
-          await preference.clear();
+          await preference.setStringList(
+              'filterIdList', ['DC:0D:30:03:53:3A', 'DC:0D:30:03:52:73']);
         },
         tooltip: 'Increment',
         child: Icon(Icons.add),
