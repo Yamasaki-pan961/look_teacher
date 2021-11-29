@@ -2,9 +2,12 @@
   "dart.flutterHotReloadOnSave": "always",
   "dart.hotReloadProgress": "statusBar",
   "cSpell.words": [
+    "autocorrect",
+    "autovalidate",
     "colorpicker",
     "CUAD",
     "figma",
+    "Groupkey",
     "riverpod",
     "rssi",
     "workmanager",
