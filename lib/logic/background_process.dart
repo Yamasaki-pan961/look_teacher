@@ -8,8 +8,8 @@ class BackgroundProcess {
   BackgroundProcess._internal();
   static final BackgroundProcess _singleton = BackgroundProcess._internal();
 
-  Future<void> periodic(
-      {required Duration interval,required void Function(Timer t) function}) async {
-    Timer.periodic(interval, (Timer t) => function(t));
+  Timer periodic(
+      {required Duration interval,required void Function(Timer t) function}) {
+    return Timer.periodic(interval, (Timer t) => function(t));
   }
 }
