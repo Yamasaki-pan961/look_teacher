@@ -16,7 +16,10 @@ class SchoolCRUDController {
     const crud = 'CREATE';
     await targetCollectionReference
         .add(recordData)
-        .then((DocumentReference documentReference) {
+        .then((DocumentReference documentReference) async {
+      await targetCollectionReference.doc('schoolList').set(
+          {documentReference.id: recordData['schoolName'] as String},
+          SetOptions(merge: true));
       _logSuccess(crud);
       return documentReference.id;
     }).catchError((Object error) {
@@ -27,49 +30,43 @@ class SchoolCRUDController {
     });
   }
 
-  Future<void> updateRecord(String id, Map<String, dynamic> recordData) async {
+  Future<void> updateRecord(String id, Map<String, dynamic> recordData,
+      Map<String, dynamic>? schoolMap) async {
     const crud = 'UPDATE';
     await targetCollectionReference
         .doc(id)
         .set(recordData)
-        .then((value) => _logSuccess(crud))
+        .then((value) async {
+          if (schoolMap != null) {
+            if (schoolMap.containsKey(id)) {
+              schoolMap[id] = recordData['schoolName'] as String;
+              await targetCollectionReference
+                  .doc('schoolList')
+                  .update(schoolMap);
+            }
+          }
+          _logSuccess(crud);
+        })
         .catchError((Object error) => _logFailed(crud, error))
         .timeout(timeLimit, onTimeout: () {
-      _logTimeout(crud);
-    });
+          _logTimeout(crud);
+        });
   }
 
-  Future<void> deleteRecord(String id) async {
+  Future<void> deleteRecord(String id, Map<String, dynamic>? schoolMap) async {
     const crud = 'DELETE';
     await targetCollectionReference
         .doc(id)
         .delete()
-        .then((value) => _logSuccess(crud))
-        .catchError((Object error) => _logFailed(crud, error))
-        .timeout(timeLimit, onTimeout: () {
-      _logTimeout(crud);
-    });
-  }
-
-  Future<void> setRecord(String id, Map<String, dynamic> recordData,
-      SetOptions? setOptions) async {
-    const crud = 'SET';
-    await targetCollectionReference
-        .doc(id)
-        .set(recordData, setOptions)
-        .then((value) => _logSuccess(crud))
-        .catchError((Object error) => _logFailed(crud, error))
-        .timeout(timeLimit, onTimeout: () {
-      _logTimeout(crud);
-    });
-  }
-
-  Future<void> updateField(String id, String fieldName, dynamic value) async {
-    const crud = 'UPDATE FIELD';
-    await targetCollectionReference
-        .doc(id)
-        .update({fieldName: value})
-        .then((value) => _logSuccess(crud))
+        .then((value) async {
+          if (schoolMap != null) {
+            if (schoolMap.containsKey(id)) {
+              schoolMap.remove(id);
+            }
+            await targetCollectionReference.doc('schoolList').set(schoolMap);
+          }
+          _logSuccess(crud);
+        })
         .catchError((Object error) => _logFailed(crud, error))
         .timeout(timeLimit, onTimeout: () {
           _logTimeout(crud);
