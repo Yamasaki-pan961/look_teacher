@@ -1,13 +1,13 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:look_teacher/logic/bluetooth_scan.dart';
+import 'package:look_teacher/controller/school_crud_controller.dart';
+import 'package:look_teacher/models/device_model.dart';
+import 'package:look_teacher/models/school_model.dart';
 import 'package:look_teacher/providers/current_teacher_provider.dart';
+import 'package:look_teacher/providers/schools_provider.dart';
 import 'package:look_teacher/screen/email_verified_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends HookWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -25,7 +25,11 @@ class HomeScreen extends HookWidget {
         return const EmailVerifiedScreen();
       }
     }
+
+    final schoolMap = useProvider(schoolMapProvider).state;
+    final selectedSchool = useProvider(selectedSchoolProvider).state;
     final currentTeacher = useProvider(currentTeacherProvider).state;
+    final teacherSchool = useProvider(teacherSchoolProvider).state;
     return DefaultTabController(
         length: _tab.length,
         child: Scaffold(
@@ -76,9 +80,6 @@ class HomeScreen extends HookWidget {
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () async {
-              log((await bluetoothScan()).toString());
-              await (await SharedPreferences.getInstance()).setStringList(
-                  'filterIdList', ['DC:0D:30:03:52:73', 'DC:0D:30:03:53:3A']);
             },
             child: const Icon(Icons.add),
           ),
@@ -89,7 +90,7 @@ class HomeScreen extends HookWidget {
 class TabPage extends StatelessWidget {
   const TabPage({Key? key, required this.icon, required this.title})
       : super(key: key);
-      
+
   final IconData icon;
   final String title;
 
