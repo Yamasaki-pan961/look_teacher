@@ -2,10 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:look_teacher/controller/school_crud_controller.dart';
-import 'package:look_teacher/models/device_model.dart';
-import 'package:look_teacher/models/school_model.dart';
 import 'package:look_teacher/providers/current_teacher_provider.dart';
+import 'package:look_teacher/providers/favorite_provider.dart';
 import 'package:look_teacher/providers/schools_provider.dart';
 import 'package:look_teacher/screen/email_verified_screen.dart';
 
@@ -23,7 +21,7 @@ class HomeScreen extends HookWidget {
     final user = useProvider(authUserStreamProvider).data?.value;
     if (user != null) {
       if (!user.emailVerified) {
-      // ログインしていて、メールの確認がされてないとき
+        // ログインしていて、メールの確認がされてないとき
         return const EmailVerifiedScreen();
       }
     }
@@ -32,6 +30,8 @@ class HomeScreen extends HookWidget {
     final selectedSchool = useProvider(selectedSchoolProvider).state;
     final currentTeacher = useProvider(currentTeacherProvider).state;
     final teacherSchool = useProvider(teacherSchoolProvider).state;
+    final favoriteSchoolIdList = useProvider(favoriteSchoolIdListProvider);
+    final favoriteTeacherIdList = useProvider(favoriteTeacherIdListProvider);
     return DefaultTabController(
         length: _tab.length,
         child: Scaffold(
@@ -52,7 +52,7 @@ class HomeScreen extends HookWidget {
               child: ListView(
                 children: [
                   if (currentTeacher == null)
-                  // ログインしていないとき、教員登録・ログインボタンが表示される
+                    // ログインしていないとき、教員登録・ログインボタンが表示される
                     Column(
                       children: [
                         MaterialButton(
@@ -70,7 +70,7 @@ class HomeScreen extends HookWidget {
                       ],
                     ),
                   if (currentTeacher != null)
-                  // ログインしているとき、ログアウトボタンが表示される。
+                    // ログインしているとき、ログアウトボタンが表示される。
                     Column(children: [
                       MaterialButton(
                         onPressed: () async {
@@ -84,8 +84,7 @@ class HomeScreen extends HookWidget {
             ),
           ),
           floatingActionButton: FloatingActionButton(
-            onPressed: () async {
-            },
+            onPressed: () async {},
             child: const Icon(Icons.add),
           ),
         ));
