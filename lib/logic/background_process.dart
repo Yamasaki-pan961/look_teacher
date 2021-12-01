@@ -1,5 +1,6 @@
 import 'dart:async';
 
+// よくわかっていない、バックグラウンド処理の方法
 class BackgroundProcess {
   factory BackgroundProcess() {
     return _singleton;
