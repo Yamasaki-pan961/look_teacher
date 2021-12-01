@@ -19,13 +19,15 @@ class HomeScreen extends HookWidget {
   ];
   @override
   Widget build(BuildContext context) {
+    // FireAuthのユーザーを取得
     final user = useProvider(authUserStreamProvider).data?.value;
     if (user != null) {
       if (!user.emailVerified) {
+      // ログインしていて、メールの確認がされてないとき
         return const EmailVerifiedScreen();
       }
     }
-
+    // 必要なデータをプロバイダーから取得する。HookWidgetのみプロバイダーを利用可能
     final schoolMap = useProvider(schoolMapProvider).state;
     final selectedSchool = useProvider(selectedSchoolProvider).state;
     final currentTeacher = useProvider(currentTeacherProvider).state;
@@ -44,11 +46,13 @@ class HomeScreen extends HookWidget {
             TabPage(title: 'Bicycle', icon: Icons.directions_bike),
             TabPage(title: 'Boat', icon: Icons.directions_boat),
           ]),
+          // drawer 左からスワイプするとメニュー画面が出てくる
           drawer: Drawer(
             child: Center(
               child: ListView(
                 children: [
                   if (currentTeacher == null)
+                  // ログインしていないとき、教員登録・ログインボタンが表示される
                     Column(
                       children: [
                         MaterialButton(
@@ -66,6 +70,7 @@ class HomeScreen extends HookWidget {
                       ],
                     ),
                   if (currentTeacher != null)
+                  // ログインしているとき、ログアウトボタンが表示される。
                     Column(children: [
                       MaterialButton(
                         onPressed: () async {

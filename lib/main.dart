@@ -10,8 +10,11 @@ import 'package:look_teacher/screen/login_screen.dart';
 import 'package:look_teacher/screen/make_user_screen.dart';
 
 Future<void> main() async {
+  // Firebaseの初期化
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  // 通知の初期化
   await AwesomeNotifications().initialize(
       // set the icon to null if you want to use the default app icon
       null,
@@ -37,6 +40,8 @@ Future<void> main() async {
     await AwesomeNotifications()
         .requestPermissionToSendNotifications(channelKey: 'basic_channel');
   }
+
+  
   runApp(const ProviderScope(child: MyApp()));
 }
 
