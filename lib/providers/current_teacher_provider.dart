@@ -20,15 +20,11 @@ final authUserStreamProvider = StreamProvider<User?>((ref) {
   return FirebaseAuth.instance.userChanges();
 });
 
-
-
 // 現在のuserのFirestoreのデータを監視するプロバイダー
 final currentTeacherStreamProvider = StreamProvider<DocumentSnapshot?>((ref) {
-
   // FireAuthのuserが変化すると再構築され、読み込むデータが変化する
   final User? user = ref.watch(authUserStreamProvider).data?.value;
   if (user != null) {
-
     // Firestoreの現在のuserのDocumentSnapshotを返却する。
     // DocumentSnapshotはドキュメントの変化を監視する。変化があったとき、参照しているところが再構築する
     return TeacherCRUDController()
@@ -43,11 +39,8 @@ final currentTeacherStreamProvider = StreamProvider<DocumentSnapshot?>((ref) {
 // 書き換え可能な定期的な(periodic)スキャンを提供する変数
 Timer? scanTimer;
 
-
-
 // 現在のTeacherUserを監視するプロバイダー
 final currentTeacherProvider = StateProvider<TeacherUserModel?>((ref) {
-  
   if (scanTimer != null) {
     // 再構築時、scanTimerを止める
     scanTimer!.cancel();
@@ -57,11 +50,10 @@ final currentTeacherProvider = StateProvider<TeacherUserModel?>((ref) {
       data: (snapshot) {
         // DocumentSnapshotがnullかどうか
         if (snapshot != null) {
-
           // Firestoreにデータが存在するか
           if (snapshot.exists) {
             // 存在時
-            
+
             // DocumentSnapshotからTeacherUserを生成
             final teacher = TeacherUserModel.fromDoc(snapshot);
 
@@ -70,7 +62,7 @@ final currentTeacherProvider = StateProvider<TeacherUserModel?>((ref) {
               // 有効時、スキャンタイマーを設定する
 
               scanTimer = BackgroundProcess().periodic(
-                // 20秒感覚で実行
+                  // 20秒感覚で実行
                   interval: const Duration(seconds: 20),
                   function: (Timer t) async {
                     // 内部ストレージからdeviceIdListを取得
@@ -89,12 +81,9 @@ final currentTeacherProvider = StateProvider<TeacherUserModel?>((ref) {
                       if (nearestDevice != null) {
                         // 最も近いデバイスがある時
                         if (nearestDevice != teacher.deviceId) {
-
                           // 前回のスキャンと違うときのみFirestoreに保存
-                          await TeacherCRUDController().setRecord(
-                              teacher.uid,
-                              teacher.copyWith(deviceId: nearestDevice).toMap(),
-                              null);
+                          await TeacherCRUDController().setRecord(teacher.uid,
+                              teacher.copyWith(deviceId: nearestDevice), null);
                         }
                       }
 
@@ -123,7 +112,6 @@ final currentTeacherProvider = StateProvider<TeacherUserModel?>((ref) {
 
 // TeacherUserが所属するFirestoreのschoolを監視するプロバイダー
 final teacherSchoolStream = StreamProvider<DocumentSnapshot?>((ref) {
-
   // 現在のTeacherUserが変更されると、再構築される
   final teacher = ref.watch(currentTeacherProvider).state;
   if (teacher != null) {
@@ -137,11 +125,8 @@ final teacherSchoolStream = StreamProvider<DocumentSnapshot?>((ref) {
   return Stream.value(null);
 });
 
-
-
 // TeacherUserのschoolを提供するプロバイダー。監視もする
 final teacherSchoolProvider = StateProvider<SchoolModel?>((ref) {
-
   // Firestoreのschoolが変更されると再構築される
   final stream = ref.watch(teacherSchoolStream);
   return stream.when(
