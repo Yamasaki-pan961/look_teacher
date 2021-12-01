@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:look_teacher/models/school_model.dart';
 
 class SchoolCRUDController {
   SchoolCRUDController() {
@@ -11,14 +12,14 @@ class SchoolCRUDController {
   late final CollectionReference targetCollectionReference;
 
   Future<String?> createRecord(
-    Map<String, dynamic> recordData,
+    SchoolModel school,
   ) async {
     const crud = 'CREATE';
     await targetCollectionReference
-        .add(recordData)
+        .add(school.toMap())
         .then((DocumentReference documentReference) async {
       await targetCollectionReference.doc('schoolList').set(
-          {documentReference.id: recordData['schoolName'] as String},
+          {documentReference.id: school.schoolName},
           SetOptions(merge: true));
       _logSuccess(crud);
       return documentReference.id;
@@ -30,16 +31,16 @@ class SchoolCRUDController {
     });
   }
 
-  Future<void> updateRecord(String id, Map<String, dynamic> recordData,
+  Future<void> updateRecord(String id, SchoolModel school,
       Map<String, dynamic>? schoolMap) async {
     const crud = 'UPDATE';
     await targetCollectionReference
         .doc(id)
-        .set(recordData)
+        .set(school.toMap())
         .then((value) async {
           if (schoolMap != null) {
             if (schoolMap.containsKey(id)) {
-              schoolMap[id] = recordData['schoolName'] as String;
+              schoolMap[id] = school.schoolName;
               await targetCollectionReference
                   .doc('schoolList')
                   .update(schoolMap);
