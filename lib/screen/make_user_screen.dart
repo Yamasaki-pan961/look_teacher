@@ -116,21 +116,18 @@ class MakeUserScreen extends HookWidget {
                     onPressed: () async {
                       if (_formKey.currentState?.validate() ?? false) {
                         try {
-
                           // FireAuthにアカウントを登録する
                           final userCredential = await FirebaseAuth.instance
                               .createUserWithEmailAndPassword(
                                   email: email.value, password: password.value);
                           if (userCredential.user != null) {
-
                             // メールアドレスに認証URLを送信
                             await userCredential.user!.sendEmailVerification();
 
                             // FirestoreにUserごとのドキュメントを作成
                             await TeacherCRUDController().setRecord(
                                 userCredential.user!.uid,
-                                TeacherUserModel(uid: userCredential.user!.uid)
-                                    .toMap(),
+                                TeacherUserModel(uid: userCredential.user!.uid),
                                 null);
                             Navigator.of(context).pop();
                           }
