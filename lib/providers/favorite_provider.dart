@@ -34,7 +34,7 @@ class FavoriteIdListNotifier extends StateNotifier<List<String>> {
     }
   }
 
-  Future<void> delete(List<String> targetList) async {
+  Future<void> remove(List<String> targetList) async {
     final list = [...state];
     targetList.forEach(list.remove);
     await _setState(list);
