@@ -24,7 +24,7 @@ class SchoolModel with _$SchoolModel {
     if (field != null) {
       final String schoolName = field['schoolName'] as String;
 
-      final String schoolId = field['schoolId'] as String;
+      final String schoolId = doc.id;
       final String adminId = field['adminId'] as String;
 
       final deviceMapList =
@@ -58,7 +58,6 @@ class SchoolModel with _$SchoolModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'schoolName':schoolName,
-      'schoolId': schoolId,
       'adminId': adminId,
       'deviceList': deviceList.map((element) => element.toMap()).toList(),
       'applicantList': applicantList.map((element) => element.toMap()).toList(),

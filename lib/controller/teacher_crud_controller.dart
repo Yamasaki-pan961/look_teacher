@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:look_teacher/models/teacher_user_model.dart';
 
 class TeacherCRUDController {
   TeacherCRUDController() {
@@ -10,11 +11,11 @@ class TeacherCRUDController {
   final String targetCollectionName = 'users';
   late final CollectionReference targetCollectionReference;
 
-  Future<void> updateRecord(String id, Map<String, dynamic> recordData) async {
+  Future<void> updateRecord(String id, TeacherUserModel teacher) async {
     const crud = 'UPDATE';
     await targetCollectionReference
         .doc(id)
-        .set(recordData)
+        .set(teacher.toMap())
         .then((value) => _logSuccess(crud))
         .catchError((Object error) => _logFailed(crud, error))
         .timeout(timeLimit, onTimeout: () {
@@ -34,12 +35,12 @@ class TeacherCRUDController {
     });
   }
 
-  Future<void> setRecord(String id, Map<String, dynamic> recordData,
+  Future<void> setRecord(String id, TeacherUserModel teacher,
       SetOptions? setOptions) async {
     const crud = 'SET';
     await targetCollectionReference
         .doc(id)
-        .set(recordData, setOptions)
+        .set(teacher.toMap(), setOptions)
         .then((value) => _logSuccess(crud))
         .catchError((Object error) => _logFailed(crud, error))
         .timeout(timeLimit, onTimeout: () {

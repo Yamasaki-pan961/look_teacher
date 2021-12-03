@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:look_teacher/models/school_model.dart';
 
 class SchoolCRUDController {
   SchoolCRUDController() {
@@ -11,12 +12,15 @@ class SchoolCRUDController {
   late final CollectionReference targetCollectionReference;
 
   Future<String?> createRecord(
-    Map<String, dynamic> recordData,
+    SchoolModel school,
   ) async {
     const crud = 'CREATE';
     await targetCollectionReference
-        .add(recordData)
-        .then((DocumentReference documentReference) {
+        .add(school.toMap())
+        .then((DocumentReference documentReference) async {
+      await targetCollectionReference.doc('schoolList').set(
+          {documentReference.id: school.schoolName},
+          SetOptions(merge: true));
       _logSuccess(crud);
       return documentReference.id;
     }).catchError((Object error) {
@@ -27,49 +31,43 @@ class SchoolCRUDController {
     });
   }
 
-  Future<void> updateRecord(String id, Map<String, dynamic> recordData) async {
+  Future<void> updateRecord(String id, SchoolModel school,
+      Map<String, dynamic>? schoolMap) async {
     const crud = 'UPDATE';
     await targetCollectionReference
         .doc(id)
-        .set(recordData)
-        .then((value) => _logSuccess(crud))
+        .set(school.toMap())
+        .then((value) async {
+          if (schoolMap != null) {
+            if (schoolMap.containsKey(id)) {
+              schoolMap[id] = school.schoolName;
+              await targetCollectionReference
+                  .doc('schoolList')
+                  .update(schoolMap);
+            }
+          }
+          _logSuccess(crud);
+        })
         .catchError((Object error) => _logFailed(crud, error))
         .timeout(timeLimit, onTimeout: () {
-      _logTimeout(crud);
-    });
+          _logTimeout(crud);
+        });
   }
 
-  Future<void> deleteRecord(String id) async {
+  Future<void> deleteRecord(String id, Map<String, dynamic>? schoolMap) async {
     const crud = 'DELETE';
     await targetCollectionReference
         .doc(id)
         .delete()
-        .then((value) => _logSuccess(crud))
-        .catchError((Object error) => _logFailed(crud, error))
-        .timeout(timeLimit, onTimeout: () {
-      _logTimeout(crud);
-    });
-  }
-
-  Future<void> setRecord(String id, Map<String, dynamic> recordData,
-      SetOptions? setOptions) async {
-    const crud = 'SET';
-    await targetCollectionReference
-        .doc(id)
-        .set(recordData, setOptions)
-        .then((value) => _logSuccess(crud))
-        .catchError((Object error) => _logFailed(crud, error))
-        .timeout(timeLimit, onTimeout: () {
-      _logTimeout(crud);
-    });
-  }
-
-  Future<void> updateField(String id, String fieldName, dynamic value) async {
-    const crud = 'UPDATE FIELD';
-    await targetCollectionReference
-        .doc(id)
-        .update({fieldName: value})
-        .then((value) => _logSuccess(crud))
+        .then((value) async {
+          if (schoolMap != null) {
+            if (schoolMap.containsKey(id)) {
+              schoolMap.remove(id);
+            }
+            await targetCollectionReference.doc('schoolList').set(schoolMap);
+          }
+          _logSuccess(crud);
+        })
         .catchError((Object error) => _logFailed(crud, error))
         .timeout(timeLimit, onTimeout: () {
           _logTimeout(crud);
