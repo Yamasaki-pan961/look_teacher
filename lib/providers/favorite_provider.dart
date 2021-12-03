@@ -13,25 +13,36 @@ final favoriteTeacherIdListProvider =
     StateNotifierProvider<FavoriteIdListNotifier, List<String>?>(
         (ref) => FavoriteIdListNotifier(key: 'favoriteTeacher'));
 
-class FavoriteIdListNotifier extends StateNotifier<List<String>?> {
-  FavoriteIdListNotifier({required this.key}) : super(null) {
-    List<String>? list;
+class FavoriteIdListNotifier extends StateNotifier<List<String>> {
+  FavoriteIdListNotifier({required this.key}) : super(<String>[]) {
+    List<String> list;
     SharedPreferences.getInstance().then((value) {
       if (value.containsKey(key)) {
-        list = value.getStringList(key);
+        list = value.getStringList(key) ?? [];
         state = list;
       }
     });
   }
   final String key;
 
-  Future<void> setState(List<String> list) async {
+  Future<void> _setState(List<String> list) async {
     {
       if (state != list) {
         await (await SharedPreferences.getInstance()).setStringList(key, list);
         state = list;
       }
     }
+  }
+
+  Future<void> delete(List<String> targetList) async {
+    final list = [...state];
+    targetList.forEach(list.remove);
+    await _setState(list);
+  }
+
+  Future<void> add(List<String> addList) async {
+    final list = [...state, ...addList];
+    await _setState(list);
   }
 }
 
