@@ -37,12 +37,12 @@ class FavoriteIdListNotifier extends StateNotifier<List<String>> {
   Future<void> remove(List<String> targetList) async {
     final list = [...state];
     targetList.forEach(list.remove);
-    await _setState(list);
+    await _setState(list.toSet().toList());
   }
 
   Future<void> add(List<String> addList) async {
-    final list = [...state, ...addList];
-    await _setState(list);
+    final list = [...addList,...state];
+    await _setState(list.toSet().toList());
   }
 }
 
