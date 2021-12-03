@@ -12,9 +12,7 @@ class TeacherWidget extends HookWidget {
   final TeacherUserModel teacherUserModel;
   @override
   Widget build(BuildContext context) {
-    final List<String> favoriteTeacher = [
-      ...useProvider(favoriteTeacherIdListProvider) ?? []
-    ];
+    final List<String> favoriteTeacher = useProvider(favoriteTeacherIdListProvider);
     bool isFavorite = false;
     isFavorite = favoriteTeacher.contains(teacherUserModel.uid);
     return Container(
@@ -31,16 +29,14 @@ class TeacherWidget extends HookWidget {
                 IconButton(
                     onPressed: () async {
                       if (isFavorite) {
-                        final list = favoriteTeacher
-                          ..remove(teacherUserModel.uid);
                         await context
                             .read(favoriteTeacherIdListProvider.notifier)
-                            .setState(list);
+                            .remove([teacherUserModel.uid]);
                       } else {
                         final list = favoriteTeacher..add(teacherUserModel.uid);
                         await context
                             .read(favoriteTeacherIdListProvider.notifier)
-                            .setState(list);
+                            .add([teacherUserModel.uid]);
                       }
                     },
                     icon: isFavorite

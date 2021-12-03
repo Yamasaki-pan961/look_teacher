@@ -6,11 +6,11 @@ import 'package:look_teacher/providers/schools_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final favoriteSchoolIdListProvider =
-    StateNotifierProvider<FavoriteIdListNotifier, List<String>?>(
+    StateNotifierProvider<FavoriteIdListNotifier, List<String>>(
         (ref) => FavoriteIdListNotifier(key: 'favoriteSchool'));
 
 final favoriteTeacherIdListProvider =
-    StateNotifierProvider<FavoriteIdListNotifier, List<String>?>(
+    StateNotifierProvider<FavoriteIdListNotifier, List<String>>(
         (ref) => FavoriteIdListNotifier(key: 'favoriteTeacher'));
 
 class FavoriteIdListNotifier extends StateNotifier<List<String>> {
