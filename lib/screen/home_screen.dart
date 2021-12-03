@@ -2,10 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:look_teacher/models/school_model.dart';
 import 'package:look_teacher/providers/current_teacher_provider.dart';
 import 'package:look_teacher/providers/favorite_provider.dart';
 import 'package:look_teacher/providers/schools_provider.dart';
 import 'package:look_teacher/screen/email_verified_screen.dart';
+import 'package:look_teacher/screen/school_list_screen.dart';
 
 class HomeScreen extends HookWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -41,8 +43,8 @@ class HomeScreen extends HookWidget {
               tabs: _tab,
             ),
           ),
-          body: const TabBarView(children: <Widget>[
-            TabPage(title: 'Car', icon: Icons.directions_car),
+          body: TabBarView(children: <Widget>[
+            SchoolListScreen(),
             TabPage(title: 'Bicycle', icon: Icons.directions_bike),
             TabPage(title: 'Boat', icon: Icons.directions_boat),
           ]),
@@ -84,7 +86,8 @@ class HomeScreen extends HookWidget {
             ),
           ),
           floatingActionButton: FloatingActionButton(
-            onPressed: () async {},
+            onPressed: () async {
+            },
             child: const Icon(Icons.add),
           ),
         ));
