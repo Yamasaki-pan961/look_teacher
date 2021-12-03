@@ -7,6 +7,7 @@ import 'package:look_teacher/providers/current_teacher_provider.dart';
 import 'package:look_teacher/providers/favorite_provider.dart';
 import 'package:look_teacher/providers/schools_provider.dart';
 import 'package:look_teacher/screen/email_verified_screen.dart';
+import 'package:look_teacher/screen/favorite_school_list_screen.dart';
 import 'package:look_teacher/screen/school_list_screen.dart';
 
 class HomeScreen extends HookWidget {
@@ -45,7 +46,7 @@ class HomeScreen extends HookWidget {
           ),
           body: TabBarView(children: <Widget>[
             SchoolListScreen(),
-            TabPage(title: 'Bicycle', icon: Icons.directions_bike),
+            FavoriteSchoolListScreen(),
             TabPage(title: 'Boat', icon: Icons.directions_boat),
           ]),
           // drawer 左からスワイプするとメニュー画面が出てくる
