@@ -12,11 +12,11 @@ class TeacherWidget extends HookWidget {
   final TeacherUserModel teacherUserModel;
   @override
   Widget build(BuildContext context) {
-    final favoriteTeacher = useProvider(favoriteTeacherIdListProvider);
+    final List<String> favoriteTeacher = [
+      ...useProvider(favoriteTeacherIdListProvider) ?? []
+    ];
     bool isFavorite = false;
-    if (favoriteTeacher != null) {
-      isFavorite = favoriteTeacher.contains(teacherUserModel.uid);
-    }
+    isFavorite = favoriteTeacher.contains(teacherUserModel.uid);
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: Colors.blue, width: 2),
@@ -29,24 +29,26 @@ class TeacherWidget extends HookWidget {
             Row(
               children: [
                 IconButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (isFavorite) {
-                        final list = favoriteTeacher ?? []
+                        final list = favoriteTeacher
                           ..remove(teacherUserModel.uid);
-                        context
+                        await context
                             .read(favoriteTeacherIdListProvider.notifier)
                             .setState(list);
                       } else {
-                        final list = favoriteTeacher ?? []
-                          ..add(teacherUserModel.uid);
-                        context
+                        final list = favoriteTeacher..add(teacherUserModel.uid);
+                        await context
                             .read(favoriteTeacherIdListProvider.notifier)
                             .setState(list);
                       }
                     },
                     icon: isFavorite
-                        ? Icon(Icons.star)
-                        : Icon(Icons.star_border_outlined)),
+                        ? const Icon(
+                            Icons.star,
+                            color: Colors.yellow,
+                          )
+                        : const Icon(Icons.star_border)),
                 Text(teacherUserModel.name),
               ],
             ),
