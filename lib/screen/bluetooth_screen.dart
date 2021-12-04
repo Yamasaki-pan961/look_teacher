@@ -36,6 +36,14 @@ class BluetoothScreen extends HookWidget {
                   child: Text('${key.name}, 電波強度:${value + 100}'),
                 ));
               });
+              buttonList.add(MaterialButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push<Widget>(MaterialPageRoute(
+                      builder: (context) => BluetoothScreen()));
+                },
+                child: const Text('再スキャン'),
+              ));
               return Center(
                   child: SingleChildScrollView(
                       child: Column(
