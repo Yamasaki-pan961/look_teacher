@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter_blue/flutter_blue.dart';
 
-Future<Map<BluetoothDevice, int>?> bluetoothScan() async {
+Future<Map<BluetoothDevice, int>> bluetoothScan() async {
   final deviceMap = <BluetoothDevice, int>{};
   final FlutterBlue flutterBlue = FlutterBlue.instance;
 
@@ -11,7 +11,7 @@ Future<Map<BluetoothDevice, int>?> bluetoothScan() async {
     await flutterBlue.stopScan();
   }
   log('start scan');
-  await flutterBlue.startScan(timeout: const Duration(seconds: 4));
+  await flutterBlue.startScan(timeout: const Duration(seconds: 5));
 
   // スキャン結果を使う
   flutterBlue.scanResults.listen((scanList) {
@@ -32,7 +32,7 @@ Future<Map<BluetoothDevice, int>?> bluetoothScan() async {
 // 最も近くにあるdeviceを取得する
 Future<String?> getNearestDeviceId(List<String> filterIdList) async {
   // スキャン結果を取得する
-  final Map<BluetoothDevice, int>? deviceMap = await bluetoothScan();
+  final Map<BluetoothDevice, int> deviceMap = await bluetoothScan();
 
   // スキャンが成功しているとき。成功しているときはdeviceMapがnullでない
   if (deviceMap != null) {
