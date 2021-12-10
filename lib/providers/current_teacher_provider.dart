@@ -145,6 +145,10 @@ final teacherSchoolProvider = StateProvider<SchoolModel?>((ref) {
           });
           // schoolを返却
           return school;
+        } else {
+          SharedPreferences.getInstance().then((value) {
+            value.remove('filterIdList');
+          });
         }
       },
       loading: () {},
