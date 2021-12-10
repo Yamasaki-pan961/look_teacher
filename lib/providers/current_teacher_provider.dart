@@ -80,11 +80,13 @@ final currentTeacherProvider = StateProvider<TeacherUserModel?>((ref) {
 
                       if (nearestDevice != null) {
                         // 最も近いデバイスがある時
-                        if (nearestDevice != teacher.deviceId) {
-                          // 前回のスキャンと違うときのみFirestoreに保存
-                          await TeacherCRUDController().setRecord(teacher.uid,
-                              teacher.copyWith(deviceId: nearestDevice), null);
-                        }
+                        // 前回のスキャンと違うときのみFirestoreに保存
+                        await TeacherCRUDController().setRecord(
+                            teacher.uid,
+                            teacher.copyWith(
+                                deviceId: nearestDevice,
+                                lastScanTime: DateTime.now()),
+                            null);
                       }
 
                       // スキャン結果を通知で送る
@@ -145,6 +147,10 @@ final teacherSchoolProvider = StateProvider<SchoolModel?>((ref) {
           });
           // schoolを返却
           return school;
+        } else {
+          SharedPreferences.getInstance().then((value) {
+            value.remove('filterIdList');
+          });
         }
       },
       loading: () {},
