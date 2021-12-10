@@ -13,6 +13,7 @@ class TeacherUserModel with _$TeacherUserModel {
     @Default(true) bool isEnableBluetooth,
     @Default('') String deviceId,
     @Default('') String schoolId,
+    required DateTime lastScanTime,
     @Default(<String>[]) List<String> notifications,
   }) = _TeacherUserModel;
 
@@ -24,6 +25,8 @@ class TeacherUserModel with _$TeacherUserModel {
       final bool isEnableBluetooth = field['isEnableBluetooth'] as bool;
       final String deviceId = field['deviceId'] as String;
       final String schoolId = field['schoolId'] as String;
+      final DateTime lastScanTime =
+          (field['lastScanTime'] as Timestamp).toDate();
       final List<String> notifications =
           (field['notifications'] as List).cast<String>();
 
@@ -33,9 +36,10 @@ class TeacherUserModel with _$TeacherUserModel {
           isEnableBluetooth: isEnableBluetooth,
           deviceId: deviceId,
           schoolId: schoolId,
-          notifications: notifications);
+          notifications: notifications,
+          lastScanTime: lastScanTime);
     }
-    return const TeacherUserModel(uid: '');
+    return TeacherUserModel(uid: '',lastScanTime: DateTime(1900));
   }
 
   const TeacherUserModel._();
@@ -47,7 +51,8 @@ class TeacherUserModel with _$TeacherUserModel {
       'isEnableBluetooth': isEnableBluetooth,
       'deviceId': deviceId,
       'schoolId': schoolId,
-      'notifications': notifications
+      'notifications': notifications,
+      'lastScanTime':lastScanTime,
     };
   }
 }
