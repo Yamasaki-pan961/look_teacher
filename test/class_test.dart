@@ -9,11 +9,12 @@ import 'package:look_teacher/models/teacher_user_model.dart';
 
 void main() {
   test('toMap test', () {
-    const TeacherUserModel teacher = TeacherUserModel(
+    final TeacherUserModel teacher = TeacherUserModel(
         uid: 'aaa',
         name: 'yuge',
         deviceId: 'device',
-        notifications: <String>['iyei', 'jojo']);
+        notifications: <String>['iyei', 'jojo'],
+        lastScanTime: DateTime(1900));
     log(teacher.toMap().toString());
 
     const DeviceModel device =

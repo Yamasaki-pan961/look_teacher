@@ -127,7 +127,7 @@ class MakeUserScreen extends HookWidget {
                             // FirestoreにUserごとのドキュメントを作成
                             await TeacherCRUDController().setRecord(
                                 userCredential.user!.uid,
-                                TeacherUserModel(uid: userCredential.user!.uid),
+                                TeacherUserModel(uid: userCredential.user!.uid,lastScanTime: DateTime(1900)),
                                 null);
                             Navigator.of(context).pop();
                           }
