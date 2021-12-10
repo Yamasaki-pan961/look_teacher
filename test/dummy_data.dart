@@ -17,10 +17,11 @@ const List<ApplicantModel> applicantList = [applicant1, applicant2];
 
 const teacherIdList = <String>['teacher-id1'];
 const teacherIdList2 = <String>['teacher-id2'];
+const SchoolClassModel defaultClass = SchoolClassModel(name: 'default');
 const SchoolClassModel schoolClass = SchoolClassModel(
     name: 'class-A', teacherIdList: [...teacherIdList, ...teacherIdList2]);
 
-const schoolClassList = [schoolClass];
+const schoolClassList = [defaultClass, schoolClass];
 
 const schoolModel = SchoolModel(
     schoolName: schoolName,
