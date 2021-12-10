@@ -19,14 +19,14 @@ class _$SchoolModelTearOff {
   _SchoolModel call(
       {String schoolName = '',
       String schoolId = '',
-      String adminId = '',
+      List<String> adminsId = const <String>[],
       List<DeviceModel> deviceList = const <DeviceModel>[],
       List<ApplicantModel> applicantList = const <ApplicantModel>[],
       List<SchoolClassModel> schoolClassList = const <SchoolClassModel>[]}) {
     return _SchoolModel(
       schoolName: schoolName,
       schoolId: schoolId,
-      adminId: adminId,
+      adminsId: adminsId,
       deviceList: deviceList,
       applicantList: applicantList,
       schoolClassList: schoolClassList,
@@ -41,7 +41,7 @@ const $SchoolModel = _$SchoolModelTearOff();
 mixin _$SchoolModel {
   String get schoolName => throw _privateConstructorUsedError;
   String get schoolId => throw _privateConstructorUsedError;
-  String get adminId => throw _privateConstructorUsedError;
+  List<String> get adminsId => throw _privateConstructorUsedError;
   List<DeviceModel> get deviceList => throw _privateConstructorUsedError;
   List<ApplicantModel> get applicantList => throw _privateConstructorUsedError;
   List<SchoolClassModel> get schoolClassList =>
@@ -60,7 +60,7 @@ abstract class $SchoolModelCopyWith<$Res> {
   $Res call(
       {String schoolName,
       String schoolId,
-      String adminId,
+      List<String> adminsId,
       List<DeviceModel> deviceList,
       List<ApplicantModel> applicantList,
       List<SchoolClassModel> schoolClassList});
@@ -78,7 +78,7 @@ class _$SchoolModelCopyWithImpl<$Res> implements $SchoolModelCopyWith<$Res> {
   $Res call({
     Object? schoolName = freezed,
     Object? schoolId = freezed,
-    Object? adminId = freezed,
+    Object? adminsId = freezed,
     Object? deviceList = freezed,
     Object? applicantList = freezed,
     Object? schoolClassList = freezed,
@@ -92,10 +92,10 @@ class _$SchoolModelCopyWithImpl<$Res> implements $SchoolModelCopyWith<$Res> {
           ? _value.schoolId
           : schoolId // ignore: cast_nullable_to_non_nullable
               as String,
-      adminId: adminId == freezed
-          ? _value.adminId
-          : adminId // ignore: cast_nullable_to_non_nullable
-              as String,
+      adminsId: adminsId == freezed
+          ? _value.adminsId
+          : adminsId // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       deviceList: deviceList == freezed
           ? _value.deviceList
           : deviceList // ignore: cast_nullable_to_non_nullable
@@ -122,7 +122,7 @@ abstract class _$SchoolModelCopyWith<$Res>
   $Res call(
       {String schoolName,
       String schoolId,
-      String adminId,
+      List<String> adminsId,
       List<DeviceModel> deviceList,
       List<ApplicantModel> applicantList,
       List<SchoolClassModel> schoolClassList});
@@ -142,7 +142,7 @@ class __$SchoolModelCopyWithImpl<$Res> extends _$SchoolModelCopyWithImpl<$Res>
   $Res call({
     Object? schoolName = freezed,
     Object? schoolId = freezed,
-    Object? adminId = freezed,
+    Object? adminsId = freezed,
     Object? deviceList = freezed,
     Object? applicantList = freezed,
     Object? schoolClassList = freezed,
@@ -156,10 +156,10 @@ class __$SchoolModelCopyWithImpl<$Res> extends _$SchoolModelCopyWithImpl<$Res>
           ? _value.schoolId
           : schoolId // ignore: cast_nullable_to_non_nullable
               as String,
-      adminId: adminId == freezed
-          ? _value.adminId
-          : adminId // ignore: cast_nullable_to_non_nullable
-              as String,
+      adminsId: adminsId == freezed
+          ? _value.adminsId
+          : adminsId // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       deviceList: deviceList == freezed
           ? _value.deviceList
           : deviceList // ignore: cast_nullable_to_non_nullable
@@ -182,7 +182,7 @@ class _$_SchoolModel extends _SchoolModel {
   const _$_SchoolModel(
       {this.schoolName = '',
       this.schoolId = '',
-      this.adminId = '',
+      this.adminsId = const <String>[],
       this.deviceList = const <DeviceModel>[],
       this.applicantList = const <ApplicantModel>[],
       this.schoolClassList = const <SchoolClassModel>[]})
@@ -194,9 +194,9 @@ class _$_SchoolModel extends _SchoolModel {
   @JsonKey(defaultValue: '')
   @override
   final String schoolId;
-  @JsonKey(defaultValue: '')
+  @JsonKey(defaultValue: const <String>[])
   @override
-  final String adminId;
+  final List<String> adminsId;
   @JsonKey(defaultValue: const <DeviceModel>[])
   @override
   final List<DeviceModel> deviceList;
@@ -209,7 +209,7 @@ class _$_SchoolModel extends _SchoolModel {
 
   @override
   String toString() {
-    return 'SchoolModel(schoolName: $schoolName, schoolId: $schoolId, adminId: $adminId, deviceList: $deviceList, applicantList: $applicantList, schoolClassList: $schoolClassList)';
+    return 'SchoolModel(schoolName: $schoolName, schoolId: $schoolId, adminsId: $adminsId, deviceList: $deviceList, applicantList: $applicantList, schoolClassList: $schoolClassList)';
   }
 
   @override
@@ -222,9 +222,9 @@ class _$_SchoolModel extends _SchoolModel {
             (identical(other.schoolId, schoolId) ||
                 const DeepCollectionEquality()
                     .equals(other.schoolId, schoolId)) &&
-            (identical(other.adminId, adminId) ||
+            (identical(other.adminsId, adminsId) ||
                 const DeepCollectionEquality()
-                    .equals(other.adminId, adminId)) &&
+                    .equals(other.adminsId, adminsId)) &&
             (identical(other.deviceList, deviceList) ||
                 const DeepCollectionEquality()
                     .equals(other.deviceList, deviceList)) &&
@@ -241,7 +241,7 @@ class _$_SchoolModel extends _SchoolModel {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(schoolName) ^
       const DeepCollectionEquality().hash(schoolId) ^
-      const DeepCollectionEquality().hash(adminId) ^
+      const DeepCollectionEquality().hash(adminsId) ^
       const DeepCollectionEquality().hash(deviceList) ^
       const DeepCollectionEquality().hash(applicantList) ^
       const DeepCollectionEquality().hash(schoolClassList);
@@ -256,7 +256,7 @@ abstract class _SchoolModel extends SchoolModel {
   const factory _SchoolModel(
       {String schoolName,
       String schoolId,
-      String adminId,
+      List<String> adminsId,
       List<DeviceModel> deviceList,
       List<ApplicantModel> applicantList,
       List<SchoolClassModel> schoolClassList}) = _$_SchoolModel;
@@ -267,7 +267,7 @@ abstract class _SchoolModel extends SchoolModel {
   @override
   String get schoolId => throw _privateConstructorUsedError;
   @override
-  String get adminId => throw _privateConstructorUsedError;
+  List<String> get adminsId => throw _privateConstructorUsedError;
   @override
   List<DeviceModel> get deviceList => throw _privateConstructorUsedError;
   @override

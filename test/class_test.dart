@@ -33,7 +33,7 @@ void main() {
         schoolName: '津山高専',
         schoolId: '12345',
         schoolClassList: [schoolClassModel],
-        adminId: teacher.uid,
+        adminsId: [teacher.uid],
         deviceList: [device],
         applicantList: [applicant]);
     log(school.toMap().toString());

@@ -13,7 +13,7 @@ class SchoolModel with _$SchoolModel {
   const factory SchoolModel({
     @Default('') String schoolName,
     @Default('') String schoolId,
-    @Default('') String adminId,
+    @Default(<String>[]) List<String> adminsId,
     @Default(<DeviceModel>[]) List<DeviceModel> deviceList,
     @Default(<ApplicantModel>[]) List<ApplicantModel> applicantList,
     @Default(<SchoolClassModel>[]) List<SchoolClassModel> schoolClassList,
@@ -25,7 +25,7 @@ class SchoolModel with _$SchoolModel {
       final String schoolName = field['schoolName'] as String;
 
       final String schoolId = doc.id;
-      final String adminId = field['adminId'] as String;
+      final List<String> adminsId = (field['adminsId'] as List).cast<String>();
 
       final deviceMapList =
           (field['deviceList'] as List).cast<Map<String, dynamic>>();
@@ -45,7 +45,7 @@ class SchoolModel with _$SchoolModel {
       return SchoolModel(
           schoolName: schoolName,
           schoolId: schoolId,
-          adminId: adminId,
+          adminsId: adminsId,
           deviceList: deviceList,
           applicantList: applicantList,
           schoolClassList: schoolClassList);
@@ -58,7 +58,7 @@ class SchoolModel with _$SchoolModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'schoolName':schoolName,
-      'adminId': adminId,
+      'adminsId': adminsId,
       'deviceList': deviceList.map((element) => element.toMap()).toList(),
       'applicantList': applicantList.map((element) => element.toMap()).toList(),
       'schoolClassList':
