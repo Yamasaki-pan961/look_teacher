@@ -14,8 +14,8 @@ Future<bool> deleteTeacherInSchool(
   final classList = [...schoolModel.schoolClassList];
   final SchoolClassModel schoolClass = classList
       .firstWhere((element) => element.teacherIdList.contains(teacher.uid));
-  final teacherIdList = [...schoolClass.teacherIdList..remove(teacher.uid)];
-  final newSchoolClass = schoolClass.copyWith(teacherIdList: teacherIdList);
+  final teacherIdList = [...schoolClass.teacherIdList];
+  final newSchoolClass = schoolClass.copyWith(teacherIdList: teacherIdList..remove(teacher.uid));
 
   classList
     ..remove(schoolClass)
