@@ -5,7 +5,7 @@ import 'package:look_teacher/models/school_model.dart';
 import 'package:look_teacher/models/teacher_user_model.dart';
 
 final TeacherUserModel teacher =
-    TeacherUserModel(uid: 'teacher-1', lastScanTime: DateTime.now(),name: 'yuge');
+    TeacherUserModel(uid: 'teacher-id1', lastScanTime: DateTime.now(),name: 'yuge');
 const String schoolName = 'A';
 const String schoolId = 'id-aaa';
 const List<String> adminsId = ['yama'];
