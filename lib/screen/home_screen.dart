@@ -87,8 +87,6 @@ class HomeScreen extends HookWidget {
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () async {
-              context.read(teacherSchoolProvider).state = SchoolModel();
-              context.read(favoriteSchoolIdListProvider.notifier).setState([]);
             },
             child: const Icon(Icons.add),
           ),

@@ -6,32 +6,43 @@ import 'package:look_teacher/providers/schools_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final favoriteSchoolIdListProvider =
-    StateNotifierProvider<FavoriteIdListNotifier, List<String>?>(
+    StateNotifierProvider<FavoriteIdListNotifier, List<String>>(
         (ref) => FavoriteIdListNotifier(key: 'favoriteSchool'));
 
 final favoriteTeacherIdListProvider =
-    StateNotifierProvider<FavoriteIdListNotifier, List<String>?>(
+    StateNotifierProvider<FavoriteIdListNotifier, List<String>>(
         (ref) => FavoriteIdListNotifier(key: 'favoriteTeacher'));
 
-class FavoriteIdListNotifier extends StateNotifier<List<String>?> {
-  FavoriteIdListNotifier({required this.key}) : super(null) {
-    List<String>? list;
+class FavoriteIdListNotifier extends StateNotifier<List<String>> {
+  FavoriteIdListNotifier({required this.key}) : super(<String>[]) {
+    List<String> list;
     SharedPreferences.getInstance().then((value) {
       if (value.containsKey(key)) {
-        list = value.getStringList(key);
+        list = value.getStringList(key) ?? [];
         state = list;
       }
     });
   }
   final String key;
 
-  Future<void> setState(List<String> list) async {
+  Future<void> _setState(List<String> list) async {
     {
       if (state != list) {
         await (await SharedPreferences.getInstance()).setStringList(key, list);
         state = list;
       }
     }
+  }
+
+  Future<void> remove(List<String> targetList) async {
+    final list = [...state];
+    targetList.forEach(list.remove);
+    await _setState(list.toSet().toList());
+  }
+
+  Future<void> add(List<String> addList) async {
+    final list = [...addList,...state];
+    await _setState(list.toSet().toList());
   }
 }
 
