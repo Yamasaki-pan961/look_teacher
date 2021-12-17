@@ -57,6 +57,13 @@ class HomeScreen extends HookWidget {
     final teacherSchool = useProvider(teacherSchoolProvider).state;
     final favoriteSchoolIdList = useProvider(favoriteSchoolIdListProvider);
     final favoriteTeacherIdList = useProvider(favoriteTeacherIdListProvider);
+
+    final userProfileScreen = UserProfileScreen();
+    final mySchoolScreen = Container();
+    final bluetoothScreen = BluetoothScreen();
+    final schoolAdminScreen = Container();
+    final buildSchoolScreen = Container();
+
     return DefaultTabController(
         length: _tab.length,
         child: Scaffold(
@@ -100,9 +107,24 @@ class HomeScreen extends HookWidget {
                       MaterialButton(
                         onPressed: () {
                           Navigator.of(context).push<Widget>(MaterialPageRoute(
-                              builder: (context) => UserProfileScreen()));
+                              builder: (context) => userProfileScreen));
                         },
-                        child: Text('ユーザープロファイル設定'),
+                        child: const Text('ユーザープロファイル設定'),
+                      ),
+                      MaterialButton(
+                        onPressed: () {
+                          if (teacherSchool != null) {
+                            Navigator.of(context).push<Widget>(
+                                MaterialPageRoute(
+                                    builder: (context) => mySchoolScreen));
+                          } else {
+                            showAlertDialog(
+                                context: context,
+                                title: const Text('不正な操作'),
+                                content: const Text('学校に参加していません'));
+                          }
+                        },
+                        child: const Text('自分の学校'),
                       ),
                       MaterialButton(
                         onPressed: () {
@@ -114,14 +136,70 @@ class HomeScreen extends HookWidget {
                           } else {
                             Navigator.of(context).push<Widget>(
                                 MaterialPageRoute(
-                                    builder: (context) => BluetoothScreen()));
+                                    builder: (context) => bluetoothScreen));
                           }
                         },
                         child: const Text('Bluetoothデバイスの登録'),
                       ),
                       MaterialButton(
+                        onPressed: () {
+                          if (teacherSchool != null) {
+                            if (teacherSchool.adminsId
+                                .contains(currentTeacher.uid)) {
+                              Navigator.of(context).push<Widget>(
+                                  MaterialPageRoute(
+                                      builder: (context) => schoolAdminScreen));
+                            } else {
+                              showAlertDialog(
+                                  context: context,
+                                  title: const Text('不正な操作'),
+                                  content: const Text('あなたは所属する学校の管理者ではありません'));
+                            }
+                          } else {
+                            showAlertDialog(
+                                context: context,
+                                title: const Text('不正な操作'),
+                                content: const Text('学校に参加していません'));
+                          }
+                        },
+                        child: const Text('学校の管理'),
+                      ),
+                      MaterialButton(
+                        onPressed: () {
+                          if (currentTeacher.schoolId == '') {
+                            Navigator.of(context).push<Widget>(
+                                MaterialPageRoute(
+                                    builder: (context) => buildSchoolScreen));
+                          } else {
+                            showAlertDialog(
+                                context: context,
+                                title: const Text('不正な操作'),
+                                content: const Text('学校に参加済みの教員は学校を作成できません'));
+                          }
+                        },
+                        child: const Text('学校を作る'),
+                      ),
+                      MaterialButton(
                         onPressed: () async {
-                          await FirebaseAuth.instance.signOut();
+                          showSimpleDialog(
+                              context: context,
+                              title: const Text('ログアウトしますか'),
+                              content: Row(
+                                children: [
+                                  MaterialButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text('キャンセル'),
+                                  ),
+                                  MaterialButton(
+                                    onPressed: () async {
+                                      await FirebaseAuth.instance.signOut();
+                                    },
+                                    child: const Text('ログアウト'),
+                                  )
+                                ],
+                              ));
                         },
                         child: const Text('ログアウト'),
                       )
