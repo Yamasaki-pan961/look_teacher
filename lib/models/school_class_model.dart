@@ -13,7 +13,7 @@ class SchoolClassModel with _$SchoolClassModel {
 
   factory SchoolClassModel.fromMap(Map<String, dynamic> map) {
     final String name = map['name'] as String;
-    final List<String> teacherIdList = map['teacherIdList'] as List<String>;
+    final List<String> teacherIdList = (map['teacherIdList'] as List).cast<String>();
     return SchoolClassModel(name: name, teacherIdList: teacherIdList);
   }
 

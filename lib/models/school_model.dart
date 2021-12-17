@@ -11,8 +11,9 @@ part 'school_model.freezed.dart';
 @freezed
 class SchoolModel with _$SchoolModel {
   const factory SchoolModel({
+    @Default('') String schoolName,
     @Default('') String schoolId,
-    @Default('') String adminId,
+    @Default(<String>[]) List<String> adminsId,
     @Default(<DeviceModel>[]) List<DeviceModel> deviceList,
     @Default(<ApplicantModel>[]) List<ApplicantModel> applicantList,
     @Default(<SchoolClassModel>[]) List<SchoolClassModel> schoolClassList,
@@ -21,26 +22,30 @@ class SchoolModel with _$SchoolModel {
   factory SchoolModel.fromDoc(DocumentSnapshot<Object?> doc) {
     final field = doc.data() as Map<String, dynamic>?;
     if (field != null) {
-      final String schoolId = field['schoolId'] as String;
-      final String adminId = field['adminId'] as String;
+      final String schoolName = field['schoolName'] as String;
 
-      final deviceMapList = field['deviceList'] as List<Map<String, dynamic>>;
+      final String schoolId = doc.id;
+      final List<String> adminsId = (field['adminsId'] as List).cast<String>();
+
+      final deviceMapList =
+          (field['deviceList'] as List).cast<Map<String, dynamic>>();
       final List<DeviceModel> deviceList =
           deviceMapList.map((e) => DeviceModel.fromMap(e)).toList();
 
       final applicantMapList =
-          field['applicantList'] as List<Map<String, dynamic>>;
+          (field['applicantList'] as List).cast<Map<String, dynamic>>();
       final List<ApplicantModel> applicantList =
           applicantMapList.map((e) => ApplicantModel.fromMap(e)).toList();
 
       final schoolClassMapList =
-          field['schoolClassList'] as List<Map<String, dynamic>>;
+          (field['schoolClassList'] as List).cast<Map<String, dynamic>>();
       final List<SchoolClassModel> schoolClassList =
           schoolClassMapList.map((e) => SchoolClassModel.fromMap(e)).toList();
 
       return SchoolModel(
+          schoolName: schoolName,
           schoolId: schoolId,
-          adminId: adminId,
+          adminsId: adminsId,
           deviceList: deviceList,
           applicantList: applicantList,
           schoolClassList: schoolClassList);
@@ -52,8 +57,8 @@ class SchoolModel with _$SchoolModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'schoolId': schoolId,
-      'adminId': adminId,
+      'schoolName':schoolName,
+      'adminsId': adminsId,
       'deviceList': deviceList.map((element) => element.toMap()).toList(),
       'applicantList': applicantList.map((element) => element.toMap()).toList(),
       'schoolClassList':

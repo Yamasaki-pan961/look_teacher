@@ -2,11 +2,16 @@
   "dart.flutterHotReloadOnSave": "always",
   "dart.hotReloadProgress": "statusBar",
   "cSpell.words": [
-    "CUAD",
-    "Zeplin",
+    "autocorrect",
+    "autovalidate",
     "colorpicker",
+    "CUAD",
     "figma",
+    "Groupkey",
     "riverpod",
+    "rssi",
+    "workmanager",
+    "Zeplin"
   ],
   "[php]": {
     "cSpell.fixSpellingWithRenameProvider": false
