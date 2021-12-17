@@ -30,8 +30,8 @@ class EditingClassScreen extends HookWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextField(
-              obscureText: false,
+            TextFormField(
+              initialValue: currentClass.name,
               decoration: const InputDecoration(
                 hintText: '新しいクラス名を入力',
               ),
