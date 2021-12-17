@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:look_teacher/models/teacher_user_model.dart';
 import 'package:look_teacher/providers/current_teacher_provider.dart';
 import 'package:look_teacher/providers/schools_provider.dart';
+import 'package:look_teacher/screen/edit_teacher_profile.dart';
 
 class UserProfileScreen extends HookWidget {
   const UserProfileScreen({Key? key}) : super(key: key);
@@ -12,8 +13,8 @@ class UserProfileScreen extends HookWidget {
   Widget build(BuildContext context) {
     final teacher = useProvider(currentTeacherProvider).state;
     final schoolMap = useProvider(schoolMapProvider).state;
-    final editTeacherProfileScreen = Container();
     if (teacher != null) {
+    final editTeacherProfileScreen = EditTeacherProfile(teacher: teacher);
       return Scaffold(
         appBar: AppBar(
           title: const Text('ユーザープロファイル'),
