@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:look_teacher/api/teacher/edit_teacher_profile.dart';
@@ -27,11 +29,16 @@ class EditTeacherProfile extends HookWidget {
             },
             decoration: const InputDecoration(hintText: 'Enter a new name'),
           ),
-          Switch(
-            onChanged: (bool value) {
-              isBluetoothState.value = value;
-            },
-            value: isBluetoothState.value,
+          Row(
+            children: [
+              const Text('Bluetoothスキャンの有効化'),
+              Switch(
+                onChanged: (bool value) {
+                  isBluetoothState.value = value;
+                },
+                value: isBluetoothState.value,
+              ),
+            ],
           ),
           ElevatedButton(
               onPressed: () {
@@ -39,6 +46,7 @@ class EditTeacherProfile extends HookWidget {
                     newTeacherProfile: teacher.copyWith(
                         name: inputState.value,
                         isEnableBluetooth: isBluetoothState.value));
+              Navigator.of(context).pop();
               },
               child: const Text('決定'))
         ])),
