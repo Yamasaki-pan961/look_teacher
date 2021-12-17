@@ -31,6 +31,7 @@ class BuildSchoolScreen extends HookWidget {
                   onPressed: () {
                     createSchool(
                         schoolName: inputState.value, teacher: teacher!);
+                    Navigator.of(context).pop();
                   },
                   child: const Text('登録'),
                 ),
