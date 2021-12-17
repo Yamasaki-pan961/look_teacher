@@ -27,6 +27,9 @@ class SchoolNameChangeScreen extends HookWidget {
             initialValue: teacherSchool.schoolName,
             decoration:
                 const InputDecoration(hintText: 'Enter a new school name'),
+            onChanged: (value) {
+              inputState.value = value;
+            },
           ),
           ElevatedButton(
               onPressed: () {
