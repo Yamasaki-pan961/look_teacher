@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:look_teacher/common/push_page.dart';
 import 'package:look_teacher/providers/current_teacher_provider.dart';
 
 class AdminScreen extends HookWidget {
@@ -24,15 +25,21 @@ class AdminScreen extends HookWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  pushPage(context, editSchoolNameScreen);
+                },
                 child: const Text('名前の変更'),
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  pushPage(context, adminTeacherScreen);
+                },
                 child: const Text('教員の管理'),
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  pushPage(context, adminDeviceScreen);
+                },
                 child: const Text('デバイスの管理'),
               ),
             ],
