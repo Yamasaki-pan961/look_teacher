@@ -9,7 +9,7 @@ class EditTeacherProfile extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final inputState = useState<String>('');
+    final inputState = useState<String>(teacher.name);
     final isBluetoothState = useState<bool>(teacher.isEnableBluetooth);
 
     return Scaffold(
@@ -22,6 +22,7 @@ class EditTeacherProfile extends HookWidget {
         child: Center(
             child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
           TextField(
+            controller: TextEditingController(text: inputState.value),
             onChanged: (value) {
               inputState.value = value;
             },
