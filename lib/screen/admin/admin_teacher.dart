@@ -97,11 +97,13 @@ class ClassButton extends HookWidget {
               pushPage(context, teacherListScreen);
             },
             child: Text(schoolClass.name)),
-        MaterialButton(
-            onPressed: () {
-              pushPage(context, editSchoolClassNameScreen);
-            },
-            child: const Text('編集')),
+        schoolClass.name != 'default'
+            ? MaterialButton(
+                onPressed: () {
+                  pushPage(context, editSchoolClassNameScreen);
+                },
+                child: const Text('編集'))
+            : Container(),
       ],
     );
   }
