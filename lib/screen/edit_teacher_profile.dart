@@ -21,8 +21,8 @@ class EditTeacherProfile extends HookWidget {
         padding: const EdgeInsets.all(20),
         child: Center(
             child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-          TextField(
-            controller: TextEditingController(text: inputState.value),
+          TextFormField(
+            initialValue: teacher.name,
             onChanged: (value) {
               inputState.value = value;
             },
@@ -45,7 +45,7 @@ class EditTeacherProfile extends HookWidget {
                     newTeacherProfile: teacher.copyWith(
                         name: inputState.value,
                         isEnableBluetooth: isBluetoothState.value));
-              Navigator.of(context).pop();
+                Navigator.of(context).pop();
               },
               child: const Text('決定'))
         ])),
