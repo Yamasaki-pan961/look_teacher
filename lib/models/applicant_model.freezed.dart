@@ -16,10 +16,14 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ApplicantModelTearOff {
   const _$ApplicantModelTearOff();
 
-  _ApplicantModel call({String teacherId = '', String message = ''}) {
+  _ApplicantModel call(
+      {required String teacherId,
+      required String message,
+      required String teacherName}) {
     return _ApplicantModel(
       teacherId: teacherId,
       message: message,
+      teacherName: teacherName,
     );
   }
 }
@@ -31,6 +35,7 @@ const $ApplicantModel = _$ApplicantModelTearOff();
 mixin _$ApplicantModel {
   String get teacherId => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
+  String get teacherName => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ApplicantModelCopyWith<ApplicantModel> get copyWith =>
@@ -42,7 +47,7 @@ abstract class $ApplicantModelCopyWith<$Res> {
   factory $ApplicantModelCopyWith(
           ApplicantModel value, $Res Function(ApplicantModel) then) =
       _$ApplicantModelCopyWithImpl<$Res>;
-  $Res call({String teacherId, String message});
+  $Res call({String teacherId, String message, String teacherName});
 }
 
 /// @nodoc
@@ -58,6 +63,7 @@ class _$ApplicantModelCopyWithImpl<$Res>
   $Res call({
     Object? teacherId = freezed,
     Object? message = freezed,
+    Object? teacherName = freezed,
   }) {
     return _then(_value.copyWith(
       teacherId: teacherId == freezed
@@ -67,6 +73,10 @@ class _$ApplicantModelCopyWithImpl<$Res>
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      teacherName: teacherName == freezed
+          ? _value.teacherName
+          : teacherName // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -79,7 +89,7 @@ abstract class _$ApplicantModelCopyWith<$Res>
           _ApplicantModel value, $Res Function(_ApplicantModel) then) =
       __$ApplicantModelCopyWithImpl<$Res>;
   @override
-  $Res call({String teacherId, String message});
+  $Res call({String teacherId, String message, String teacherName});
 }
 
 /// @nodoc
@@ -97,6 +107,7 @@ class __$ApplicantModelCopyWithImpl<$Res>
   $Res call({
     Object? teacherId = freezed,
     Object? message = freezed,
+    Object? teacherName = freezed,
   }) {
     return _then(_ApplicantModel(
       teacherId: teacherId == freezed
@@ -107,6 +118,10 @@ class __$ApplicantModelCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      teacherName: teacherName == freezed
+          ? _value.teacherName
+          : teacherName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -114,18 +129,22 @@ class __$ApplicantModelCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ApplicantModel extends _ApplicantModel {
-  const _$_ApplicantModel({this.teacherId = '', this.message = ''}) : super._();
+  const _$_ApplicantModel(
+      {required this.teacherId,
+      required this.message,
+      required this.teacherName})
+      : super._();
 
-  @JsonKey(defaultValue: '')
   @override
   final String teacherId;
-  @JsonKey(defaultValue: '')
   @override
   final String message;
+  @override
+  final String teacherName;
 
   @override
   String toString() {
-    return 'ApplicantModel(teacherId: $teacherId, message: $message)';
+    return 'ApplicantModel(teacherId: $teacherId, message: $message, teacherName: $teacherName)';
   }
 
   @override
@@ -136,14 +155,19 @@ class _$_ApplicantModel extends _ApplicantModel {
                 const DeepCollectionEquality()
                     .equals(other.teacherId, teacherId)) &&
             (identical(other.message, message) ||
-                const DeepCollectionEquality().equals(other.message, message)));
+                const DeepCollectionEquality()
+                    .equals(other.message, message)) &&
+            (identical(other.teacherName, teacherName) ||
+                const DeepCollectionEquality()
+                    .equals(other.teacherName, teacherName)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(teacherId) ^
-      const DeepCollectionEquality().hash(message);
+      const DeepCollectionEquality().hash(message) ^
+      const DeepCollectionEquality().hash(teacherName);
 
   @JsonKey(ignore: true)
   @override
@@ -152,14 +176,18 @@ class _$_ApplicantModel extends _ApplicantModel {
 }
 
 abstract class _ApplicantModel extends ApplicantModel {
-  const factory _ApplicantModel({String teacherId, String message}) =
-      _$_ApplicantModel;
+  const factory _ApplicantModel(
+      {required String teacherId,
+      required String message,
+      required String teacherName}) = _$_ApplicantModel;
   const _ApplicantModel._() : super._();
 
   @override
   String get teacherId => throw _privateConstructorUsedError;
   @override
   String get message => throw _privateConstructorUsedError;
+  @override
+  String get teacherName => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ApplicantModelCopyWith<_ApplicantModel> get copyWith =>

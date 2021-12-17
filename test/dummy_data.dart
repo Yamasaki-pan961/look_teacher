@@ -4,8 +4,8 @@ import 'package:look_teacher/models/school_class_model.dart';
 import 'package:look_teacher/models/school_model.dart';
 import 'package:look_teacher/models/teacher_user_model.dart';
 
-final TeacherUserModel teacher =
-    TeacherUserModel(uid: 'teacher-id1', lastScanTime: DateTime.now(),name: 'yuge');
+final TeacherUserModel teacher = TeacherUserModel(
+    uid: 'teacher-id1', lastScanTime: DateTime.now(), name: 'yuge');
 const String schoolName = 'A';
 const String schoolId = 'id-aaa';
 const List<String> adminsId = ['yama'];
@@ -13,8 +13,10 @@ const List<DeviceModel> deviceList = [
   DeviceModel(
       deviceName: 'device1', deviceId: 'deviceId-1', locationName: 'lab')
 ];
-const applicant1 = ApplicantModel(teacherId: 'teacher-id1', message: 'yey');
-const applicant2 = ApplicantModel(teacherId: 'teacher-id2', message: 'yey2');
+const applicant1 =
+    ApplicantModel(teacherId: 'teacher-id1', message: 'yey', teacherName: 'a');
+const applicant2 =
+    ApplicantModel(teacherId: 'teacher-id2', message: 'yey2', teacherName: 'a');
 
 const List<ApplicantModel> applicantList = [applicant1, applicant2];
 

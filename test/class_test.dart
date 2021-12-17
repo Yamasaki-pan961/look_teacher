@@ -22,7 +22,7 @@ void main() {
     log(device.toMap().toString());
 
     final ApplicantModel applicant =
-        ApplicantModel(teacherId: teacher.uid, message: '入れてください');
+        ApplicantModel(teacherId: teacher.uid, message: '入れてください',teacherName: 'yuge');
     log(applicant.toMap().toString());
 
     final SchoolClassModel schoolClassModel =
