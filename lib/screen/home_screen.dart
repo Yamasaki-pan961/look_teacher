@@ -8,10 +8,10 @@ import 'package:look_teacher/providers/current_teacher_provider.dart';
 import 'package:look_teacher/providers/favorite_provider.dart';
 import 'package:look_teacher/providers/schools_provider.dart';
 import 'package:look_teacher/screen/bluetooth_screen.dart';
-import 'package:look_teacher/screen/email_verified_screen.dart';
-import 'package:look_teacher/screen/favorite_school_list_screen.dart';
-import 'package:look_teacher/screen/school_list_screen.dart';
-import 'package:look_teacher/screen/user_profile_screen.dart';
+import 'package:look_teacher/screen/auth/email_verified_screen.dart';
+import 'package:look_teacher/screen/school/favorite_school_list_screen.dart';
+import 'package:look_teacher/screen/school/school_list_screen.dart';
+import 'package:look_teacher/screen/teacher/user_profile_screen.dart';
 
 final _tab = <Tab>[
   Tab(
