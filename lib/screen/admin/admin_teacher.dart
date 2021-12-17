@@ -5,8 +5,10 @@ import 'package:look_teacher/api/admin-school/create_school_class.dart';
 import 'package:look_teacher/common/push_page.dart';
 import 'package:look_teacher/common/show_dialog.dart';
 import 'package:look_teacher/models/school_class_model.dart';
+import 'package:look_teacher/models/school_model.dart';
 import 'package:look_teacher/providers/current_teacher_provider.dart';
 import 'package:look_teacher/providers/schools_provider.dart';
+import 'package:look_teacher/screen/admin/editing_class_screen.dart';
 
 class AdminTeacherScreen extends HookWidget {
   const AdminTeacherScreen({Key? key}) : super(key: key);
@@ -70,7 +72,10 @@ class AdminTeacherScreen extends HookWidget {
                   child: const Text('教員参加申請受理'),
                 ),
                 for (final schoolClass in school.schoolClassList)
-                  ClassButton(schoolClass: schoolClass)
+                  ClassButton(
+                    schoolClass: schoolClass,
+                    school: school,
+                  )
               ],
             ),
           ),
@@ -82,12 +87,15 @@ class AdminTeacherScreen extends HookWidget {
 }
 
 class ClassButton extends HookWidget {
-  const ClassButton({Key? key, required this.schoolClass}) : super(key: key);
+  const ClassButton({Key? key, required this.schoolClass, required this.school})
+      : super(key: key);
   final SchoolClassModel schoolClass;
+  final SchoolModel school;
 
   @override
   Widget build(BuildContext context) {
-    final editSchoolClassNameScreen = Container();
+    final editSchoolClassNameScreen =
+        EditingClassScreen(currentClass: schoolClass, currentSchool: school);
     final teacherListScreen = Container();
     return Row(
       mainAxisSize: MainAxisSize.min,
