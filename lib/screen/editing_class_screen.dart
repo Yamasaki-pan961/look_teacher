@@ -12,8 +12,10 @@ import 'package:look_teacher/providers/current_teacher_provider.dart';
 import 'package:look_teacher/providers/schools_provider.dart';
 
 class EditingClassScreen extends HookWidget {
-  const EditingClassScreen({Key? key, required this.currentClass}) : super(key: key);
+  const EditingClassScreen({Key? key, required this.currentClass, required this.currentSchool})
+      : super(key: key);
   final SchoolClassModel currentClass;
+  final SchoolModel currentSchool;
   @override
   Widget build(BuildContext context) {
     final editingClassName = useState<String>('');
@@ -41,10 +43,17 @@ class EditingClassScreen extends HookWidget {
                 ElevatedButton(
                   child: const Text('決定'),
                   onPressed: () {
-                    Map<String, String>? informationSchoolMap = context.read(schoolMapProvider).state;
-                    SchoolModel? informationSchoolModel=context.read(teacherSchoolProvider).state;
-                    if(informationSchoolModel != null && informationSchoolMap !=null){
-                    editSchoolClassName(currentClass: currentClass, newName: editingClassName.value, schoolMap: informationSchoolMap, schoolModel: informationSchoolModel);
+                    final Map<String, String>? informationSchoolMap =
+                        context.read(schoolMapProvider).state;
+                    final SchoolModel? informationSchoolModel =
+                        context.read(teacherSchoolProvider).state;
+                    if (informationSchoolModel != null &&
+                        informationSchoolMap != null) {
+                      editSchoolClassName(
+                          currentClass: currentClass,
+                          newName: editingClassName.value,
+                          schoolMap: informationSchoolMap,
+                          schoolModel: informationSchoolModel);
                     }
                   },
                 ),
@@ -67,7 +76,14 @@ class EditingClassScreen extends HookWidget {
                               ),
                               child: const Text('削除'),
                               onPressed: () {
-                                deleteSchool(school: , schoolMap: {});
+                                final Map<String, String>?
+                                    informationSchoolMap =
+                                    context.read(schoolMapProvider).state;
+                                if (informationSchoolMap != null) {
+                                  deleteSchool(
+                                      school: currentSchool,
+                                      schoolMap: informationSchoolMap);
+                                }
                                 Navigator.of(context).pop();
                               },
                             ),
