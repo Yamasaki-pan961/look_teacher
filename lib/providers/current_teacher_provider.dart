@@ -63,7 +63,7 @@ final currentTeacherProvider = StateProvider<TeacherUserModel?>((ref) {
 
               scanTimer = BackgroundProcess().periodic(
                   // 20秒感覚で実行
-                  interval: const Duration(seconds: 20),
+                  interval: const Duration(seconds: 40),
                   function: (Timer t) async {
                     // 内部ストレージからdeviceIdListを取得
                     final preference = await SharedPreferences.getInstance();
