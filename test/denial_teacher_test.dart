@@ -8,7 +8,6 @@ Future<void> main() async {
    await  denialTeacher(
         applicantModel: applicant1,
         schoolMap: {},
-        schoolModel: schoolModel,
-        className: 'class-A');
+        schoolModel: schoolModel,);
   });
 }
