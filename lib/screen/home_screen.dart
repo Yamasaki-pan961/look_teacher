@@ -7,6 +7,7 @@ import 'package:look_teacher/models/school_model.dart';
 import 'package:look_teacher/providers/current_teacher_provider.dart';
 import 'package:look_teacher/providers/favorite_provider.dart';
 import 'package:look_teacher/providers/schools_provider.dart';
+import 'package:look_teacher/screen/admin/admin_screen.dart';
 import 'package:look_teacher/screen/bluetooth_screen.dart';
 import 'package:look_teacher/screen/auth/email_verified_screen.dart';
 import 'package:look_teacher/screen/school/favorite_school_list_screen.dart';
@@ -61,7 +62,7 @@ class HomeScreen extends HookWidget {
     final userProfileScreen = UserProfileScreen();
     final mySchoolScreen = Container();
     final bluetoothScreen = BluetoothScreen();
-    final schoolAdminScreen = Container();
+    final schoolAdminScreen = AdminScreen();
     final buildSchoolScreen = Container();
 
     return DefaultTabController(
