@@ -9,14 +9,33 @@ import 'package:look_teacher/providers/schools_provider.dart';
 import 'package:look_teacher/screen/email_verified_screen.dart';
 import 'package:look_teacher/screen/school_list_screen.dart';
 
+final _tab = <Tab>[
+  Tab(
+    icon: const Icon(Icons.search),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: const [Icon(Icons.account_balance), Text('School')],
+    ),
+  ),
+  Tab(
+    icon: const Icon(Icons.star),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: const [Icon(Icons.account_balance), Text('School')],
+    ),
+  ),
+  Tab(
+    icon: const Icon(Icons.star),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: const [Icon(Icons.person), Text('Teacher')],
+    ),
+  ),
+];
+
 class HomeScreen extends HookWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
-  static const _tab = <Tab>[
-    Tab(text: 'Car', icon: Icon(Icons.directions_car)),
-    Tab(text: 'Bicycle', icon: Icon(Icons.directions_bike)),
-    Tab(text: 'Boat', icon: Icon(Icons.directions_boat)),
-  ];
   @override
   Widget build(BuildContext context) {
     // FireAuthのユーザーを取得
@@ -39,14 +58,14 @@ class HomeScreen extends HookWidget {
         child: Scaffold(
           appBar: AppBar(
             title: const Text('ホーム'),
-            bottom: const TabBar(
+            bottom: TabBar(
               tabs: _tab,
             ),
           ),
           body: TabBarView(children: <Widget>[
             SchoolListScreen(),
-            TabPage(title: 'Bicycle', icon: Icons.directions_bike),
-            TabPage(title: 'Boat', icon: Icons.directions_boat),
+            Container(),
+            Container(),
           ]),
           // drawer 左からスワイプするとメニュー画面が出てくる
           drawer: Drawer(
@@ -85,37 +104,6 @@ class HomeScreen extends HookWidget {
               ),
             ),
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () async {
-              context.read(teacherSchoolProvider).state = SchoolModel();
-              context.read(favoriteSchoolIdListProvider.notifier).setState([]);
-            },
-            child: const Icon(Icons.add),
-          ),
         ));
-  }
-}
-
-class TabPage extends StatelessWidget {
-  const TabPage({Key? key, required this.icon, required this.title})
-      : super(key: key);
-
-  final IconData icon;
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Icon(icon, size: 64),
-          Text(
-            title,
-          ),
-        ],
-      ),
-    );
   }
 }
