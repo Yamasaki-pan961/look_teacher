@@ -8,6 +8,7 @@ import 'package:look_teacher/models/school_class_model.dart';
 import 'package:look_teacher/models/school_model.dart';
 import 'package:look_teacher/providers/current_teacher_provider.dart';
 import 'package:look_teacher/providers/schools_provider.dart';
+import 'package:look_teacher/screen/admin/applicant_list_screen.dart';
 import 'package:look_teacher/screen/admin/editing_class_screen.dart';
 
 class AdminTeacherScreen extends HookWidget {
@@ -69,7 +70,7 @@ class AdminTeacherScreen extends HookWidget {
                 ),
                 MaterialButton(
                   onPressed: () {
-                    pushPage(context, const Center(child: Text('未実装')));
+                    pushPage(context, const ApplicantListScreen());
                   },
                   child: const Text('教員参加申請受理'),
                 ),
