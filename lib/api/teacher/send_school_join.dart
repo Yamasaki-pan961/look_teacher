@@ -9,7 +9,7 @@ Future<bool> sendSchoolJoin(
     required String message,
     required TeacherUserModel teacher,
     required Map<String, String> schoolMap}) async {
-  final applicant = ApplicantModel(teacherId: teacher.uid, message: message);
+  final applicant = ApplicantModel(teacherId: teacher.uid, message: message,teacherName: teacher.name);
   final newApplicantList = [...targetSchool.applicantList, applicant];
   try {
     await SchoolCRUDController().updateRecord(targetSchool.schoolId,

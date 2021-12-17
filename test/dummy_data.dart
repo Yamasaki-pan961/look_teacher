@@ -13,8 +13,8 @@ const List<DeviceModel> deviceList = [
   DeviceModel(
       deviceName: 'device1', deviceId: 'deviceId-1', locationName: 'lab')
 ];
-const applicant1 = ApplicantModel(teacherId: 'teacher-id1', message: 'yey');
-const applicant2 = ApplicantModel(teacherId: 'teacher-id2', message: 'yey2');
+const applicant1 = ApplicantModel(teacherId: 'teacher-id1', message: 'yey',teacherName:'a');
+const applicant2 = ApplicantModel(teacherId: 'teacher-id2', message: 'yey2',teacherName:'a');
 
 const List<ApplicantModel> applicantList = [applicant1, applicant2];
 
