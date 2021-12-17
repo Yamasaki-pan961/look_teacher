@@ -15,12 +15,11 @@ class SchoolCRUDController {
     SchoolModel school,
   ) async {
     const crud = 'CREATE';
-    await targetCollectionReference
+    return targetCollectionReference
         .add(school.toMap())
         .then((DocumentReference documentReference) async {
       await targetCollectionReference.doc('schoolList').set(
-          {documentReference.id: school.schoolName},
-          SetOptions(merge: true));
+          {documentReference.id: school.schoolName}, SetOptions(merge: true));
       _logSuccess(crud);
       return documentReference.id;
     }).catchError((Object error) {
@@ -31,8 +30,8 @@ class SchoolCRUDController {
     });
   }
 
-  Future<void> updateRecord(String id, SchoolModel school,
-      Map<String, dynamic>? schoolMap) async {
+  Future<void> updateRecord(
+      String id, SchoolModel school, Map<String, dynamic>? schoolMap) async {
     const crud = 'UPDATE';
     await targetCollectionReference
         .doc(id)
