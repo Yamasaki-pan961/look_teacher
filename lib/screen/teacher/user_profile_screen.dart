@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:look_teacher/models/teacher_user_model.dart';
 import 'package:look_teacher/providers/current_teacher_provider.dart';
 import 'package:look_teacher/providers/schools_provider.dart';
-import 'package:look_teacher/screen/edit_teacher_profile.dart';
+import 'package:look_teacher/screen/teacher/edit_teacher_profile.dart';
 
 class UserProfileScreen extends HookWidget {
   const UserProfileScreen({Key? key}) : super(key: key);
