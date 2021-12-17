@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:look_teacher/api/admin-school/delete_school.dart';
 import 'package:look_teacher/api/admin-school/delete_school_class.dart';
 import 'package:look_teacher/api/admin-school/edit_school_class_name.dart';
 import 'package:look_teacher/common/show_dialog.dart';
@@ -20,7 +19,7 @@ class EditingClassScreen extends HookWidget {
   final SchoolModel currentSchool;
   @override
   Widget build(BuildContext context) {
-    final editingClassName = useState<String>('');
+    final editingClassName = useState<String>(currentClass.name);
     return Scaffold(
       appBar: AppBar(
         title: const Text('クラス編集'),
@@ -56,6 +55,7 @@ class EditingClassScreen extends HookWidget {
                           newName: editingClassName.value,
                           schoolMap: informationSchoolMap,
                           schoolModel: informationSchoolModel);
+                      Navigator.of(context).pop();
                     }
                   },
                 ),
@@ -87,7 +87,9 @@ class EditingClassScreen extends HookWidget {
                                       schoolMap: informationSchoolMap,
                                       schoolClassModel: currentClass);
                                 }
-                                Navigator.of(context).pop();
+                                Navigator.of(context)
+                                  ..pop()
+                                  ..pop();
                               },
                             ),
                             ElevatedButton(

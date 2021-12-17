@@ -19,7 +19,7 @@ class AdminScreen extends HookWidget {
     final schoolMap = useProvider(schoolMapProvider).state;
     if (adminSchool != null && schoolMap != null) {
       const editSchoolNameScreen = SchoolNameChangeScreen();
-      final adminTeacherScreen = Container();
+      const adminTeacherScreen = AdminTeacherScreen();
       final adminDeviceScreen = Container();
       return Scaffold(
         appBar: AppBar(

@@ -68,7 +68,9 @@ class AdminTeacherScreen extends HookWidget {
                   child: const Text('クラスの追加'),
                 ),
                 MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    pushPage(context, const Center(child: Text('未実装')));
+                  },
                   child: const Text('教員参加申請受理'),
                 ),
                 for (final schoolClass in school.schoolClassList)
