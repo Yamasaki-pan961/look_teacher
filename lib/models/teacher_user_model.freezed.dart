@@ -22,7 +22,7 @@ class _$TeacherUserModelTearOff {
       bool isEnableBluetooth = true,
       String deviceId = '',
       String schoolId = '',
-      bool isAdmin = false,
+      required DateTime lastScanTime,
       List<String> notifications = const <String>[]}) {
     return _TeacherUserModel(
       uid: uid,
@@ -30,7 +30,7 @@ class _$TeacherUserModelTearOff {
       isEnableBluetooth: isEnableBluetooth,
       deviceId: deviceId,
       schoolId: schoolId,
-      isAdmin: isAdmin,
+      lastScanTime: lastScanTime,
       notifications: notifications,
     );
   }
@@ -46,7 +46,7 @@ mixin _$TeacherUserModel {
   bool get isEnableBluetooth => throw _privateConstructorUsedError;
   String get deviceId => throw _privateConstructorUsedError;
   String get schoolId => throw _privateConstructorUsedError;
-  bool get isAdmin => throw _privateConstructorUsedError;
+  DateTime get lastScanTime => throw _privateConstructorUsedError;
   List<String> get notifications => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -65,7 +65,7 @@ abstract class $TeacherUserModelCopyWith<$Res> {
       bool isEnableBluetooth,
       String deviceId,
       String schoolId,
-      bool isAdmin,
+      DateTime lastScanTime,
       List<String> notifications});
 }
 
@@ -85,7 +85,7 @@ class _$TeacherUserModelCopyWithImpl<$Res>
     Object? isEnableBluetooth = freezed,
     Object? deviceId = freezed,
     Object? schoolId = freezed,
-    Object? isAdmin = freezed,
+    Object? lastScanTime = freezed,
     Object? notifications = freezed,
   }) {
     return _then(_value.copyWith(
@@ -109,10 +109,10 @@ class _$TeacherUserModelCopyWithImpl<$Res>
           ? _value.schoolId
           : schoolId // ignore: cast_nullable_to_non_nullable
               as String,
-      isAdmin: isAdmin == freezed
-          ? _value.isAdmin
-          : isAdmin // ignore: cast_nullable_to_non_nullable
-              as bool,
+      lastScanTime: lastScanTime == freezed
+          ? _value.lastScanTime
+          : lastScanTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       notifications: notifications == freezed
           ? _value.notifications
           : notifications // ignore: cast_nullable_to_non_nullable
@@ -134,7 +134,7 @@ abstract class _$TeacherUserModelCopyWith<$Res>
       bool isEnableBluetooth,
       String deviceId,
       String schoolId,
-      bool isAdmin,
+      DateTime lastScanTime,
       List<String> notifications});
 }
 
@@ -156,7 +156,7 @@ class __$TeacherUserModelCopyWithImpl<$Res>
     Object? isEnableBluetooth = freezed,
     Object? deviceId = freezed,
     Object? schoolId = freezed,
-    Object? isAdmin = freezed,
+    Object? lastScanTime = freezed,
     Object? notifications = freezed,
   }) {
     return _then(_TeacherUserModel(
@@ -180,10 +180,10 @@ class __$TeacherUserModelCopyWithImpl<$Res>
           ? _value.schoolId
           : schoolId // ignore: cast_nullable_to_non_nullable
               as String,
-      isAdmin: isAdmin == freezed
-          ? _value.isAdmin
-          : isAdmin // ignore: cast_nullable_to_non_nullable
-              as bool,
+      lastScanTime: lastScanTime == freezed
+          ? _value.lastScanTime
+          : lastScanTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       notifications: notifications == freezed
           ? _value.notifications
           : notifications // ignore: cast_nullable_to_non_nullable
@@ -201,7 +201,7 @@ class _$_TeacherUserModel extends _TeacherUserModel {
       this.isEnableBluetooth = true,
       this.deviceId = '',
       this.schoolId = '',
-      this.isAdmin = false,
+      required this.lastScanTime,
       this.notifications = const <String>[]})
       : super._();
 
@@ -219,16 +219,15 @@ class _$_TeacherUserModel extends _TeacherUserModel {
   @JsonKey(defaultValue: '')
   @override
   final String schoolId;
-  @JsonKey(defaultValue: false)
   @override
-  final bool isAdmin;
+  final DateTime lastScanTime;
   @JsonKey(defaultValue: const <String>[])
   @override
   final List<String> notifications;
 
   @override
   String toString() {
-    return 'TeacherUserModel(uid: $uid, name: $name, isEnableBluetooth: $isEnableBluetooth, deviceId: $deviceId, schoolId: $schoolId, isAdmin: $isAdmin, notifications: $notifications)';
+    return 'TeacherUserModel(uid: $uid, name: $name, isEnableBluetooth: $isEnableBluetooth, deviceId: $deviceId, schoolId: $schoolId, lastScanTime: $lastScanTime, notifications: $notifications)';
   }
 
   @override
@@ -248,9 +247,9 @@ class _$_TeacherUserModel extends _TeacherUserModel {
             (identical(other.schoolId, schoolId) ||
                 const DeepCollectionEquality()
                     .equals(other.schoolId, schoolId)) &&
-            (identical(other.isAdmin, isAdmin) ||
+            (identical(other.lastScanTime, lastScanTime) ||
                 const DeepCollectionEquality()
-                    .equals(other.isAdmin, isAdmin)) &&
+                    .equals(other.lastScanTime, lastScanTime)) &&
             (identical(other.notifications, notifications) ||
                 const DeepCollectionEquality()
                     .equals(other.notifications, notifications)));
@@ -264,7 +263,7 @@ class _$_TeacherUserModel extends _TeacherUserModel {
       const DeepCollectionEquality().hash(isEnableBluetooth) ^
       const DeepCollectionEquality().hash(deviceId) ^
       const DeepCollectionEquality().hash(schoolId) ^
-      const DeepCollectionEquality().hash(isAdmin) ^
+      const DeepCollectionEquality().hash(lastScanTime) ^
       const DeepCollectionEquality().hash(notifications);
 
   @JsonKey(ignore: true)
@@ -280,7 +279,7 @@ abstract class _TeacherUserModel extends TeacherUserModel {
       bool isEnableBluetooth,
       String deviceId,
       String schoolId,
-      bool isAdmin,
+      required DateTime lastScanTime,
       List<String> notifications}) = _$_TeacherUserModel;
   const _TeacherUserModel._() : super._();
 
@@ -295,7 +294,7 @@ abstract class _TeacherUserModel extends TeacherUserModel {
   @override
   String get schoolId => throw _privateConstructorUsedError;
   @override
-  bool get isAdmin => throw _privateConstructorUsedError;
+  DateTime get lastScanTime => throw _privateConstructorUsedError;
   @override
   List<String> get notifications => throw _privateConstructorUsedError;
   @override
