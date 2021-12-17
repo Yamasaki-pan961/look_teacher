@@ -12,7 +12,6 @@ Future<bool> permitTeacher(
     required Map<String, String> schoolMap}) async {
   final applicantList = [...schoolModel.applicantList]..remove(applicantModel);
 
-  log(applicantList.toString());
   final classList = [...schoolModel.schoolClassList];
   final SchoolClassModel schoolClass =
       classList.firstWhere((element) => element.name == className);
@@ -33,8 +32,8 @@ Future<bool> permitTeacher(
   log(schoolModel.toString());
   log(copySchool.toString());
 
-  // await SchoolCRUDController()
-  // .updateRecord(schoolModel.schoolId, copySchool, schoolMap);
+  await SchoolCRUDController()
+  .updateRecord(schoolModel.schoolId, copySchool, schoolMap);
 
   return true;
 }
