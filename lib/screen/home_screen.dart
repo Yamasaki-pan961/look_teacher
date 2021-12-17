@@ -195,6 +195,7 @@ class HomeScreen extends HookWidget {
                                   MaterialButton(
                                     onPressed: () async {
                                       await FirebaseAuth.instance.signOut();
+                                      Navigator.of(context).pop();
                                     },
                                     child: const Text('ログアウト'),
                                   )
