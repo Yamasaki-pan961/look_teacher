@@ -4,10 +4,10 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:look_teacher/screen/email_verified_screen.dart';
+import 'package:look_teacher/screen/auth/email_verified_screen.dart';
 import 'package:look_teacher/screen/home_screen.dart';
-import 'package:look_teacher/screen/login_screen.dart';
-import 'package:look_teacher/screen/make_user_screen.dart';
+import 'package:look_teacher/screen/auth/login_screen.dart';
+import 'package:look_teacher/screen/auth/make_user_screen.dart';
 
 Future<void> main() async {
   // Firebaseの初期化
