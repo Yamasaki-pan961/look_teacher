@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:look_teacher/common/push_page.dart';
 import 'package:look_teacher/providers/current_teacher_provider.dart';
+import 'package:look_teacher/screen/admin/school_name_change_screen.dart';
 
 class AdminScreen extends HookWidget {
   const AdminScreen({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class AdminScreen extends HookWidget {
   Widget build(BuildContext context) {
     final adminSchool = useProvider(teacherSchoolProvider).state;
     if (adminSchool != null) {
-      final editSchoolNameScreen = Container();
+      final editSchoolNameScreen = const SchoolNameChangeScreen();
       final adminTeacherScreen = Container();
       final adminDeviceScreen = Container();
       return Scaffold(
