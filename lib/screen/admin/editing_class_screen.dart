@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:look_teacher/api/admin-school/delete_school.dart';
+import 'package:look_teacher/api/admin-school/delete_school_class.dart';
 import 'package:look_teacher/api/admin-school/edit_school_class_name.dart';
 import 'package:look_teacher/common/show_dialog.dart';
 import 'package:look_teacher/models/school_class_model.dart';
@@ -12,7 +13,8 @@ import 'package:look_teacher/providers/current_teacher_provider.dart';
 import 'package:look_teacher/providers/schools_provider.dart';
 
 class EditingClassScreen extends HookWidget {
-  const EditingClassScreen({Key? key, required this.currentClass, required this.currentSchool})
+  const EditingClassScreen(
+      {Key? key, required this.currentClass, required this.currentSchool})
       : super(key: key);
   final SchoolClassModel currentClass;
   final SchoolModel currentSchool;
@@ -80,9 +82,10 @@ class EditingClassScreen extends HookWidget {
                                     informationSchoolMap =
                                     context.read(schoolMapProvider).state;
                                 if (informationSchoolMap != null) {
-                                  deleteSchool(
-                                      school: currentSchool,
-                                      schoolMap: informationSchoolMap);
+                                  deleteClass(
+                                      schoolModel: currentSchool,
+                                      schoolMap: informationSchoolMap,
+                                      schoolClassModel: currentClass);
                                 }
                                 Navigator.of(context).pop();
                               },
