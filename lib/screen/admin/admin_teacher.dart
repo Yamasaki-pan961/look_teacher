@@ -8,6 +8,8 @@ import 'package:look_teacher/models/school_class_model.dart';
 import 'package:look_teacher/models/school_model.dart';
 import 'package:look_teacher/providers/current_teacher_provider.dart';
 import 'package:look_teacher/providers/schools_provider.dart';
+import 'package:look_teacher/providers/teacher_list_provider.dart';
+import 'package:look_teacher/screen/admin/admin_teacher_list_screen.dart';
 import 'package:look_teacher/screen/admin/applicant_list_screen.dart';
 import 'package:look_teacher/screen/admin/editing_class_screen.dart';
 
@@ -99,18 +101,22 @@ class ClassButton extends HookWidget {
   Widget build(BuildContext context) {
     final editSchoolClassNameScreen =
         EditingClassScreen(currentClass: schoolClass, currentSchool: school);
-    final teacherListScreen = Container();
+    final teacherListScreen =
+        AdminTeacherListScreen(schoolClassName: schoolClass.name);
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         MaterialButton(
             onPressed: () {
+              context.read(classNameState).state = schoolClass.name;
               pushPage(context, teacherListScreen);
             },
             child: Text(schoolClass.name)),
         schoolClass.name != 'default'
             ? MaterialButton(
                 onPressed: () {
+                  context.read(classNameState).state = schoolClass.name;
+                  schoolClass.teacherIdList;
                   pushPage(context, editSchoolClassNameScreen);
                 },
                 child: const Text('編集'))
