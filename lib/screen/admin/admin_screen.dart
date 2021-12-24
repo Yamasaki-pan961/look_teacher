@@ -6,8 +6,9 @@ import 'package:look_teacher/api/admin-school/delete_school.dart';
 import 'package:look_teacher/common/push_page.dart';
 import 'package:look_teacher/common/show_dialog.dart';
 import 'package:look_teacher/providers/current_teacher_provider.dart';
-import 'package:look_teacher/screen/admin/admin_teacher.dart';
 import 'package:look_teacher/providers/schools_provider.dart';
+import 'package:look_teacher/screen/admin/admin_teacher.dart';
+import 'package:look_teacher/screen/admin/device_list_screen.dart';
 import 'package:look_teacher/screen/admin/school_name_change_screen.dart';
 
 class AdminScreen extends HookWidget {
@@ -20,7 +21,7 @@ class AdminScreen extends HookWidget {
     if (adminSchool != null && schoolMap != null) {
       const editSchoolNameScreen = SchoolNameChangeScreen();
       const adminTeacherScreen = AdminTeacherScreen();
-      final adminDeviceScreen = Container();
+      const adminDeviceScreen = DeviceListScreen();
       return Scaffold(
         appBar: AppBar(
           title: const Text('学校管理画面'),
