@@ -62,58 +62,58 @@ class TeacherWidget extends HookWidget {
 
       final SchoolModel? school = useProvider(teacherSchoolProvider).state;
       return Card(
-        child: school != null
-            ? ListTile(
-                title: Row(
-                  children: [
-                    IconButton(
-                        onPressed: () async {
-                          if (isFavorite) {
-                            await context
-                                .read(favoriteTeacherIdListProvider.notifier)
-                                .remove([teacherUserModel.uid]);
-                          } else {
-                            await context
-                                .read(favoriteTeacherIdListProvider.notifier)
-                                .add([teacherUserModel.uid]);
-                          }
-                        },
-                        icon: isFavorite
-                            ? const Icon(
-                                Icons.star,
-                                color: Colors.yellow,
-                              )
-                            : const Icon(Icons.star_border)),
-                    Text(teacherUserModel.name),
-                  ],
-                ),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Builder(builder: (context) {
-                      final locationName = () {
-                        final list = school.deviceList
-                            .where((element) =>
-                                element.deviceId == teacherUserModel.deviceId)
-                            .toList();
-                        if (list.isNotEmpty) {
-                          return school.deviceList
-                              .firstWhere((element) =>
-                                  element.deviceId == teacherUserModel.deviceId)
-                              .locationName;
+          child: ListTile(
+              title: Row(
+                children: [
+                  IconButton(
+                      onPressed: () async {
+                        if (isFavorite) {
+                          await context
+                              .read(favoriteTeacherIdListProvider.notifier)
+                              .remove([teacherUserModel.uid]);
                         } else {
-                          return '不明';
+                          await context
+                              .read(favoriteTeacherIdListProvider.notifier)
+                              .add([teacherUserModel.uid]);
                         }
-                      }();
-                      return Text('場所: $locationName');
-                    }),
-                    Text('最終スキャン: ${teacherUserModel.lastScanTime}'),
-                    Text('所属: ${school.schoolName}'),
-                  ],
-                ),
-              )
-            : const CircularProgressIndicator(),
-      );
+                      },
+                      icon: isFavorite
+                          ? const Icon(
+                              Icons.star,
+                              color: Colors.yellow,
+                            )
+                          : const Icon(Icons.star_border)),
+                  Text(teacherUserModel.name),
+                ],
+              ),
+              subtitle: school != null
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Builder(builder: (context) {
+                          final locationName = () {
+                            final list = school.deviceList
+                                .where((element) =>
+                                    element.deviceId ==
+                                    teacherUserModel.deviceId)
+                                .toList();
+                            if (list.isNotEmpty) {
+                              return school.deviceList
+                                  .firstWhere((element) =>
+                                      element.deviceId ==
+                                      teacherUserModel.deviceId)
+                                  .locationName;
+                            } else {
+                              return '不明';
+                            }
+                          }();
+                          return Text('場所: $locationName');
+                        }),
+                        Text('最終スキャン: ${teacherUserModel.lastScanTime}'),
+                        Text('所属: ${school.schoolName}'),
+                      ],
+                    )
+                  : Container()));
     }
     return Container();
   }
