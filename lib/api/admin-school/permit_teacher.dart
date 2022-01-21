@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:look_teacher/controller/school_crud_controller.dart';
+import 'package:look_teacher/controller/teacher_crud_controller.dart';
 import 'package:look_teacher/models/applicant_model.dart';
 import 'package:look_teacher/models/school_class_model.dart';
 import 'package:look_teacher/models/school_model.dart';
@@ -33,7 +34,9 @@ Future<bool> permitTeacher(
   log(copySchool.toString());
 
   await SchoolCRUDController()
-  .updateRecord(schoolModel.schoolId, copySchool, schoolMap);
+      .updateRecord(schoolModel.schoolId, copySchool, schoolMap);
+  await TeacherCRUDController()
+      .updateField(applicantModel.teacherId, 'schoolId', schoolModel.schoolId);
 
   return true;
 }
