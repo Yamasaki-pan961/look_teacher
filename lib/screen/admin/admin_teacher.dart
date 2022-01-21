@@ -27,61 +27,75 @@ class AdminTeacherScreen extends HookWidget {
         ),
         body: Center(
           child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                MaterialButton(
-                  onPressed: () {
-                    showSimpleDialog(
-                        context: context,
-                        title: const Text('クラスの追加'),
-                        content: HookBuilder(builder: (context) {
-                          final inputState = useState('');
-                          return Column(
-                            children: [
-                              TextFormField(
-                                  onChanged: (value) {
-                                    inputState.value = value;
-                                  },
-                                  decoration: const InputDecoration(
-                                      hintText: 'Enter a new class name')),
-                              Row(
-                                children: [
-                                  MaterialButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: const Text('キャンセル')),
-                                  MaterialButton(
-                                    onPressed: () {
-                                      createSchoolClass(
-                                          className: inputState.value,
-                                          schoolModel: school,
-                                          schoolMap: schoolMap);
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: const Text('作成'),
-                                  )
-                                ],
-                              )
-                            ],
-                          );
-                        }));
-                  },
-                  child: const Text('クラスの追加'),
-                ),
-                MaterialButton(
-                  onPressed: () {
-                    pushPage(context, const ApplicantListScreen());
-                  },
-                  child: const Text('教員参加申請受理'),
-                ),
-                for (final schoolClass in school.schoolClassList)
-                  ClassButton(
-                    schoolClass: schoolClass,
-                    school: school,
-                  )
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    child: Card(
+                      child: MaterialButton(
+                        onPressed: () {
+                          showSimpleDialog(
+                              context: context,
+                              title: const Text('クラスの追加'),
+                              content: HookBuilder(builder: (context) {
+                                final inputState = useState('');
+                                return Column(
+                                  children: [
+                                    TextFormField(
+                                        onChanged: (value) {
+                                          inputState.value = value;
+                                        },
+                                        decoration: const InputDecoration(
+                                            hintText: 'Enter a new class name')),
+                                    Row(
+                                      children: [
+                                        MaterialButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: const Text('キャンセル')),
+                                        MaterialButton(
+                                          onPressed: () {
+                                            createSchoolClass(
+                                                className: inputState.value,
+                                                schoolModel: school,
+                                                schoolMap: schoolMap);
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: const Text('作成'),
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                );
+                              }));
+                        },
+                        child: const Text('クラスの追加'),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: Card(
+                      child: MaterialButton(
+                        onPressed: () {
+                          pushPage(context, const ApplicantListScreen());
+                        },
+                        child: const Text('教員参加申請受理'),
+                      ),
+                    ),
+                  ),
+                  for (final schoolClass in school.schoolClassList)
+                    ClassButton(
+                      schoolClass: schoolClass,
+                      school: school,
+                    )
+                ],
+              ),
             ),
           ),
         ),
@@ -103,8 +117,10 @@ class ClassButton extends HookWidget {
         EditingClassScreen(currentClass: schoolClass, currentSchool: school);
     final teacherListScreen =
         AdminTeacherListScreen(schoolClassName: schoolClass.name);
-    return Row(
-      mainAxisSize: MainAxisSize.min,
+    return Card(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.max,
       children: [
         MaterialButton(
             onPressed: () {
@@ -113,7 +129,7 @@ class ClassButton extends HookWidget {
             },
             child: Text(schoolClass.name)),
         schoolClass.name != 'default'
-            ? MaterialButton(
+            ? ElevatedButton(
                 onPressed: () {
                   context.read(classNameState).state = schoolClass.name;
                   schoolClass.teacherIdList;
@@ -122,6 +138,7 @@ class ClassButton extends HookWidget {
                 child: const Text('編集'))
             : Container(),
       ],
+    ),
     );
   }
 }
