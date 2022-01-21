@@ -30,13 +30,15 @@ class TeacherWidget extends HookWidget {
   final TeacherUserModel teacherUserModel;
   late final StreamProvider<DocumentSnapshot> teacherSchoolStream;
   late final StateProvider<SchoolModel?> teacherSchool;
-  
+
   @override
   Widget build(BuildContext context) {
     final List<String> favoriteTeacher =
         useProvider(favoriteTeacherIdListProvider);
     bool isFavorite = false;
     isFavorite = favoriteTeacher.contains(teacherUserModel.uid);
+
+    final SchoolModel? school = useProvider(teacherSchool).state;
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: Colors.blue, width: 2),
@@ -44,37 +46,41 @@ class TeacherWidget extends HookWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                IconButton(
-                    onPressed: () async {
-                      if (isFavorite) {
-                        await context
-                            .read(favoriteTeacherIdListProvider.notifier)
-                            .remove([teacherUserModel.uid]);
-                      } else {
-                        final list = favoriteTeacher..add(teacherUserModel.uid);
-                        await context
-                            .read(favoriteTeacherIdListProvider.notifier)
-                            .add([teacherUserModel.uid]);
-                      }
-                    },
-                    icon: isFavorite
-                        ? const Icon(
-                            Icons.star,
-                            color: Colors.yellow,
-                          )
-                        : const Icon(Icons.star_border)),
-                Text(teacherUserModel.name),
-              ],
-            ),
-            Text(teacherUserModel.deviceId),
-            Text(teacherUserModel.schoolId),
-            Text(teacherUserModel.notifications.length.toString())
-          ],
-        ),
+        child: school != null
+            ? Column(
+                children: [
+                  Row(
+                    children: [
+                      IconButton(
+                          onPressed: () async {
+                            if (isFavorite) {
+                              await context
+                                  .read(favoriteTeacherIdListProvider.notifier)
+                                  .remove([teacherUserModel.uid]);
+                            } else {
+                              await context
+                                  .read(favoriteTeacherIdListProvider.notifier)
+                                  .add([teacherUserModel.uid]);
+                            }
+                          },
+                          icon: isFavorite
+                              ? const Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                )
+                              : const Icon(Icons.star_border)),
+                      Text(teacherUserModel.name),
+                    ],
+                  ),
+                  Text(school.deviceList
+                      .firstWhere((element) =>
+                          element.deviceId == teacherUserModel.deviceId)
+                      .locationName),
+                  Text(teacherUserModel.lastScanTime.toString()),
+                  Text(school.schoolName),
+                ],
+              )
+            : const CircularProgressIndicator(),
       ),
     );
   }
