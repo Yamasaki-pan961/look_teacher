@@ -4,9 +4,11 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:look_teacher/common/push_page.dart';
 import 'package:look_teacher/models/school_class_model.dart';
 import 'package:look_teacher/models/school_model.dart';
 import 'package:look_teacher/providers/schools_provider.dart';
+import 'package:look_teacher/screen/school/school_teachers_screen.dart';
 
 class SchoolClassListScreen extends HookWidget {
   const SchoolClassListScreen({Key? key}) : super(key: key);
@@ -25,7 +27,7 @@ class SchoolClassListScreen extends HookWidget {
               if (school != null) {
                 final classList = school.schoolClassList;
                 return Column(
-                  children: classButtonList(classList),
+                  children: classButtonList(classList, context),
                 );
               } else {
                 return const Text('クラスを作成してください');
@@ -33,7 +35,8 @@ class SchoolClassListScreen extends HookWidget {
             })))));
   }
 
-  List<Widget> classButtonList(List<SchoolClassModel> classList) {
+  List<Widget> classButtonList(
+      List<SchoolClassModel> classList, BuildContext context) {
     final list = <Widget>[];
     for (final schoolClass in classList) {
       list.add(Card(
@@ -41,7 +44,14 @@ class SchoolClassListScreen extends HookWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.max,
           children: [
-            MaterialButton(onPressed: () {}, child: Text(schoolClass.name)),
+            MaterialButton(
+                onPressed: () {
+                  pushPage(
+                      context,
+                      SchoolTeachersScreen(
+                          teacherIdList: schoolClass.teacherIdList));
+                },
+                child: Text(schoolClass.name)),
           ],
         ),
       ));
