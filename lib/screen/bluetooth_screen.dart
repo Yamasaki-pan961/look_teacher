@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:look_teacher/api/admin-school/add_device.dart';
 import 'package:look_teacher/common/show_dialog.dart';
-import 'package:look_teacher/controller/school_crud_controller.dart';
 import 'package:look_teacher/logic/bluetooth_scan.dart';
 import 'package:look_teacher/models/device_model.dart';
 import 'package:look_teacher/models/teacher_user_model.dart';
@@ -11,6 +11,8 @@ import 'package:look_teacher/providers/current_teacher_provider.dart';
 import 'package:look_teacher/providers/schools_provider.dart';
 
 class BluetoothScreen extends HookWidget {
+  const BluetoothScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final teacherSchool = useProvider(teacherSchoolProvider).state;
@@ -70,7 +72,7 @@ class BluetoothScreen extends HookWidget {
                 onPressed: () {
                   Navigator.of(context).pop();
                   Navigator.of(context).push<Widget>(MaterialPageRoute(
-                      builder: (context) => BluetoothScreen()));
+                      builder: (context) => const BluetoothScreen()));
                 },
                 child: const Text('再スキャン'),
               ));
@@ -113,6 +115,9 @@ class DeviceRegisterForm extends HookWidget {
                   padding: const EdgeInsets.all(8),
                   child: TextFormField(
                     initialValue: nameState.value,
+                    onChanged: (value) {
+                      nameState.value = value;
+                    },
                   ),
                 ))
               ],
@@ -154,16 +159,14 @@ class DeviceRegisterForm extends HookWidget {
                   onPressed: () {
                     final school = context.read(teacherSchoolProvider).state;
                     final schoolMap = context.read(schoolMapProvider).state;
-                    if (school != null) {
-                      final addDevice = DeviceModel(
-                          deviceId: device.id.toString(),
-                          deviceName: nameState.value,
-                          locationName: locationNameState.value);
-                      SchoolCRUDController().updateRecord(
-                          school.schoolId,
-                          school.copyWith(
-                              deviceList: [...school.deviceList, addDevice]),
-                          schoolMap);
+                    if (school != null && schoolMap != null) {
+                      addDevice(
+                          school: school,
+                          device: DeviceModel(
+                              deviceName: nameState.value,
+                              deviceId: device.id.toString(),
+                              locationName: locationNameState.value),
+                          schoolMap: schoolMap);
                       Navigator.of(context).pop();
                     }
                   },
