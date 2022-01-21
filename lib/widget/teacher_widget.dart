@@ -12,7 +12,7 @@ import 'package:look_teacher/providers/favorite_provider.dart';
 
 class TeacherWidget extends HookWidget {
   TeacherWidget({Key? key, required this.teacherId}) : super(key: key) {
-    teacherSchoolStreamProvider = StreamProvider<DocumentSnapshot>((ref) {
+    teacherStreamProvider = StreamProvider<DocumentSnapshot>((ref) {
       return TeacherCRUDController()
           .targetCollectionReference
           .doc(teacherId)
