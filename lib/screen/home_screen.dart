@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:look_teacher/common/push_page.dart';
 import 'package:look_teacher/common/show_dialog.dart';
 import 'package:look_teacher/models/school_model.dart';
 import 'package:look_teacher/providers/current_teacher_provider.dart';
@@ -12,6 +13,7 @@ import 'package:look_teacher/screen/bluetooth_screen.dart';
 import 'package:look_teacher/screen/auth/email_verified_screen.dart';
 import 'package:look_teacher/screen/admin/build_school_screen.dart';
 import 'package:look_teacher/screen/school/favorite_school_list_screen.dart';
+import 'package:look_teacher/screen/school/school_class_list_screen.dart';
 import 'package:look_teacher/screen/school/school_list_screen.dart';
 import 'package:look_teacher/screen/teacher/favorite_teacher_screen.dart';
 import 'package:look_teacher/screen/teacher/user_profile_screen.dart';
@@ -62,7 +64,6 @@ class HomeScreen extends HookWidget {
     final favoriteTeacherIdList = useProvider(favoriteTeacherIdListProvider);
 
     final userProfileScreen = UserProfileScreen();
-    final mySchoolScreen = Container();
     final bluetoothScreen = BluetoothScreen();
     final schoolAdminScreen = AdminScreen();
     final buildSchoolScreen = BuildSchoolScreen();
@@ -77,7 +78,7 @@ class HomeScreen extends HookWidget {
             ),
           ),
           body: TabBarView(children: <Widget>[
-            SchoolListScreen(),
+            const SchoolListScreen(),
             FavoriteSchoolListScreen(),
             const FavoriteTeacherScreen(),
           ]),
@@ -117,9 +118,9 @@ class HomeScreen extends HookWidget {
                       MaterialButton(
                         onPressed: () {
                           if (teacherSchool != null) {
-                            Navigator.of(context).push<Widget>(
-                                MaterialPageRoute(
-                                    builder: (context) => mySchoolScreen));
+                            context.read(selectedSchoolIdProvider).state =
+                                teacherSchool.schoolId;
+                            pushPage(context, const SchoolClassListScreen());
                           } else {
                             showAlertDialog(
                                 context: context,
