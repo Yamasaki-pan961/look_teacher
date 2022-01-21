@@ -10,6 +10,8 @@ import 'package:look_teacher/providers/schools_provider.dart';
 import 'package:look_teacher/screen/school/school_class_list_screen.dart';
 
 class SchoolListScreen extends HookWidget {
+  const SchoolListScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final schoolMap = useProvider(schoolMapProvider).state;
@@ -55,39 +57,41 @@ class SchoolListScreen extends HookWidget {
     final list = <Widget>[];
 
     schoolMap.forEach((schoolId, schoolName) {
-      list.add(MaterialButton(
-        onPressed: () {
-          context.read(selectedSchoolIdProvider).state = schoolId;
-          pushPage(context, const SchoolClassListScreen());
-        },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            HookBuilder(builder: (context) {
-              final favoriteSchoolIdList =
-                  useProvider(favoriteSchoolIdListProvider);
-              final isFavorite = favoriteSchoolIdList.contains(schoolId);
-              return IconButton(
-                  onPressed: () async {
-                    if (isFavorite) {
-                      await context
-                          .read(favoriteSchoolIdListProvider.notifier)
-                          .remove([schoolId]);
-                    } else {
-                      await context
-                          .read(favoriteSchoolIdListProvider.notifier)
-                          .add([schoolId]);
-                    }
-                  },
-                  icon: isFavorite
-                      ? const Icon(
-                          Icons.star,
-                          color: Colors.yellow,
-                        )
-                      : const Icon(Icons.star_border));
-            }),
-            Text(schoolName),
-          ],
+      list.add(Card(
+        child: MaterialButton(
+          onPressed: () {
+            context.read(selectedSchoolIdProvider).state = schoolId;
+            pushPage(context, const SchoolClassListScreen());
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              HookBuilder(builder: (context) {
+                final favoriteSchoolIdList =
+                    useProvider(favoriteSchoolIdListProvider);
+                final isFavorite = favoriteSchoolIdList.contains(schoolId);
+                return IconButton(
+                    onPressed: () async {
+                      if (isFavorite) {
+                        await context
+                            .read(favoriteSchoolIdListProvider.notifier)
+                            .remove([schoolId]);
+                      } else {
+                        await context
+                            .read(favoriteSchoolIdListProvider.notifier)
+                            .add([schoolId]);
+                      }
+                    },
+                    icon: isFavorite
+                        ? const Icon(
+                            Icons.star,
+                            color: Colors.yellow,
+                          )
+                        : const Icon(Icons.star_border));
+              }),
+              Text(schoolName),
+            ],
+          ),
         ),
       ));
     });
