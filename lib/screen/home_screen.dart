@@ -13,6 +13,7 @@ import 'package:look_teacher/screen/auth/email_verified_screen.dart';
 import 'package:look_teacher/screen/admin/build_school_screen.dart';
 import 'package:look_teacher/screen/school/favorite_school_list_screen.dart';
 import 'package:look_teacher/screen/school/school_list_screen.dart';
+import 'package:look_teacher/screen/teacher/favorite_teacher_screen.dart';
 import 'package:look_teacher/screen/teacher/user_profile_screen.dart';
 
 final _tab = <Tab>[
@@ -77,8 +78,8 @@ class HomeScreen extends HookWidget {
           ),
           body: TabBarView(children: <Widget>[
             SchoolListScreen(),
-            Container(),
-            Container(),
+            FavoriteSchoolListScreen(),
+            const FavoriteTeacherScreen(),
           ]),
           // drawer 左からスワイプするとメニュー画面が出てくる
           drawer: Drawer(
