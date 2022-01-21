@@ -13,8 +13,40 @@ class SchoolListScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final schoolMap = useProvider(schoolMapProvider).state;
-    return Column(
-      children: schoolButtonList(schoolMap ?? {}, context),
+    final searchWordState = useState('');
+    final searchedMap = () {
+      if (schoolMap != null) {
+        if (searchWordState.value == '') {
+          return schoolMap;
+        } else {
+          final map = <String, String>{};
+          schoolMap.forEach((schoolId, schoolName) {
+            if (schoolName.contains(searchWordState.value)) {
+              map.addAll({schoolId: schoolName});
+            }
+          });
+          return map;
+        }
+      }
+      return <String, String>{};
+    }();
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          TextFormField(
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: '検索',
+              ),
+              onChanged: (value) {
+                searchWordState.value = value;
+              }),
+          SingleChildScrollView(
+              child: Column(children: schoolButtonList(searchedMap, context)))
+        ],
+      ),
     );
   }
 
@@ -29,7 +61,7 @@ class SchoolListScreen extends HookWidget {
           pushPage(context, const SchoolClassListScreen());
         },
         child: Row(
-          mainAxisAlignment:MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             HookBuilder(builder: (context) {
               final favoriteSchoolIdList =
