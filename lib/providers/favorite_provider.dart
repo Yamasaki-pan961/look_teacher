@@ -50,9 +50,11 @@ final favoriteSchoolMapProvider = StateProvider<Map<String, String>>((ref) {
   final favoriteSchoolIdList = ref.watch(favoriteSchoolIdListProvider);
   final schoolMap = ref.watch(schoolMapProvider).state;
   final favoriteSchoolMap = <String, String>{};
-  if (favoriteSchoolIdList != null && schoolMap != null) {
+  if (schoolMap != null) {
     for (final schoolId in favoriteSchoolIdList) {
-      favoriteSchoolMap.addEntries({MapEntry(schoolId, schoolMap[schoolId]!)});
+      if(schoolMap.containsKey(schoolId)){
+        favoriteSchoolMap.addEntries({MapEntry(schoolId, schoolMap[schoolId]!)});
+      }
     }
   }
   return favoriteSchoolMap;

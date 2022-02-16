@@ -7,7 +7,7 @@ import 'package:look_teacher/providers/schools_provider.dart';
 import 'package:look_teacher/screen/school/school_class_list_screen.dart';
 
 class FavoriteSchoolListScreen extends HookWidget {
-  FavoriteSchoolListScreen({Key? key}) : super(key: key);
+  const FavoriteSchoolListScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
