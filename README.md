@@ -10,7 +10,7 @@ LookTeacherでは教員の位置情報はバックグラウンド処理によっ
 
 <img src="https://user-images.githubusercontent.com/54800851/154810639-ddcfde1d-9e7b-4ae4-9c67-aff781ea856c.jpg" alt="altテキスト" width="240px"> <img src="https://user-images.githubusercontent.com/54800851/154810119-6bb8fd8d-60c4-4bc7-9c0b-5d9d5d435491.jpg" alt="altテキスト" width="240px"> <img src="https://user-images.githubusercontent.com/54800851/154810465-75feda7b-3c43-4b17-97eb-8ac6f2dd0018.jpg" alt="altテキスト" width="240px"> <img src="https://user-images.githubusercontent.com/54800851/154810521-18b7b7ea-5f04-4cdf-8898-8b50eece5305.jpg" alt="altテキスト" width="240px"> 
 
-右から
+左から順に
 - ホーム画面
 - 教員の位置表示
 - Bluetoothデバイスの登録画面
