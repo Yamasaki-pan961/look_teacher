@@ -6,6 +6,13 @@
 LookTeacherでは教員の位置情報はバックグラウンド処理によって自動的にFirebaseに送信され、生徒・学生はリアルタイムに位置を把握することができます。
 ![image](https://user-images.githubusercontent.com/54800851/154804742-d4fdd3e9-4b1d-45f4-b5ea-4c6fb09812f9.png)
 
+「レポートは手渡しで提出！」と言う先生や/
+忙しすぎてほぼ研究室にいない先生の/
+研究室を何度も訪れることが減ると良いなと思います。
+
+このアプリは教員に一方的な負荷をかけて、学生が便利になるアプリでもあります。
+教員の小さな負担で学生の大きなメリットを生むことができるので是非普及してほしいと思います。
+
 ## スクリーンショット
 
 <img src="https://user-images.githubusercontent.com/54800851/154810639-ddcfde1d-9e7b-4ae4-9c67-aff781ea856c.jpg" alt="altテキスト" width="240px"> <img src="https://user-images.githubusercontent.com/54800851/154810119-6bb8fd8d-60c4-4bc7-9c0b-5d9d5d435491.jpg" alt="altテキスト" width="240px"> <img src="https://user-images.githubusercontent.com/54800851/154810465-75feda7b-3c43-4b17-97eb-8ac6f2dd0018.jpg" alt="altテキスト" width="240px"> <img src="https://user-images.githubusercontent.com/54800851/154810521-18b7b7ea-5f04-4cdf-8898-8b50eece5305.jpg" alt="altテキスト" width="240px"> 
@@ -27,8 +34,8 @@ LookTeacherでは教員の位置情報はバックグラウンド処理によっ
 ## Flutter採用理由
 
 ### 工期が短い
-授業時間内にしか作業できない。\
-授業時間は3～8時限目までの4.5時間で15週あったので、約70時間の作業時間しかなかった。\
+実験時間内にしか作業できない。\
+実験時間は3～8時限目までの4.5時間で15週あったので、約70時間の作業時間しかなかった。\
 私が慣れているFlutterであれば、慣れているので学習コストが低いし班員に教えることもでできると考えたため。
 
 ### iOS Android対応
@@ -42,6 +49,47 @@ OSによらずアプリが使用できる必要があるため。\
 Cloud Firestoreのデータ構造↓↓
 
 ![kaisou drawio](https://user-images.githubusercontent.com/54800851/154809852-fef2700e-6ad7-4f6d-8893-2a1030ce66d5.svg)
+
+### チーム作業について
+#### メンバー
+- 山﨑
+  - 情報科
+  - Flutter開発経験あり
+  - 担当
+    - Flutteを教える
+    - 設計
+    - 画面の作成
+    - Providerなどの基盤作成  
+- 弓削
+  - 情報科
+  - Flutter開発経験なし
+  - 担当
+    - 画面の作成
+    - 設計
+- 福田
+  - 電気科
+  - プログラミング初心者
+  - 担当
+    - 画面の作成
+    - ロゴ作成
+
+#### Fluuterチュートリアル
+まずメンバーがどのくらいプログラミングがわかるか確認し、関数やクラスの説明から始めた。\
+その後dartの基礎構文とFlutterのWidgetを説明し、Flutterのデモアプリを一緒に作った。\
+作る際はGit・GitHubやVScodeの使い方も説明した。
+
+はじめは説明と実装から理解してもらうことを意識した。
+
+その後は、弓削・福田はWebにあるFlutterのWidgetチュートリアルをして、山﨑はFlutterでBluetoothを扱う方法を調査した。
+
+#### クラスモデル設計
+使用するBluetoothパッケージを決定後、クラスモデルを設計した。
+
+ある程度の設計はホワイトボードを使い議論し、詳細設計は実装しながら考えた。\
+時間がないこととこの規模ならソースコードを見ればわかると思いクラス図は書かなかった。
+
+<img src="https://user-images.githubusercontent.com/54800851/154811180-7a01e367-947b-4018-84a4-8ec9f233f7bd.png" alt="altテキスト" width="400px"> <img src="https://user-images.githubusercontent.com/54800851/154811185-c22e085c-5aef-43a7-ae10-407640faf9df.png" alt="altテキスト" width="400px"> 
+
 
 
 ## 主な採用パッケージ
