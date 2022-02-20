@@ -43,6 +43,7 @@ OSによらずアプリが使用できる必要があるため。\
 今回Mac OSを用意することが出来なかったため、iOS用の設定をしていないが対応コストが低いと考えたため。
 
 ## 設計
+GPSでは部屋の特定まではできないため、Bluetoothデバイスとその設置部屋情報を紐づけることで特定できるようにした。
 
 ワイヤーフレーム -> [Miro](https://miro.com/app/board/uXjVObnASkI=/)
 
@@ -56,7 +57,7 @@ Cloud Firestoreのデータ構造↓↓
   - 情報科
   - Flutter開発経験あり
   - 担当
-    - Flutteを教える
+    - Flutterを教える
     - 設計
     - 画面の作成
     - Providerなどの基盤作成  
