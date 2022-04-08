@@ -124,5 +124,3 @@ Cloud Firestoreのデータ構造↓↓
   - 推奨されない構文などを避けたいが、公式Linterほど厳しくしたくないため採用
     - pedantic_mono: any
 
-Readme.pdfが学校に提出した実験報告書になっています。
-
