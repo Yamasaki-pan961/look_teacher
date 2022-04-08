@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>950052307876-130n1htvd6e8eqdhn8lebfnqkatamag0.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.950052307876-130n1htvd6e8eqdhn8lebfnqkatamag0</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>950052307876-saeadv38im8hsc2ih1boletntiidj34b.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDrCTx-5eH0le42_FUp8YKbMuWry7Fd-cQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>950052307876</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.lookTeacher</string>
+	<key>PROJECT_ID</key>
+	<string>look-teacher</string>
+	<key>STORAGE_BUCKET</key>
+	<string>look-teacher.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:950052307876:ios:e28c41133cac732d04f731</string>
+</dict>
+</plist>
