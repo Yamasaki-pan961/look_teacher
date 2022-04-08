@@ -53,7 +53,7 @@ Cloud Firestoreのデータ構造↓↓
 
 ### チーム作業について
 #### メンバー
-- 山﨑
+- YM
   - 情報科
   - Flutter開発経験あり
   - 担当
@@ -61,13 +61,13 @@ Cloud Firestoreのデータ構造↓↓
     - 設計
     - 画面の作成
     - Providerなどの基盤作成  
-- 弓削
+- YG
   - 情報科
   - Flutter開発経験なし
   - 担当
     - 画面の作成
     - 設計
-- 福田
+- FK
   - 電気科
   - プログラミング初心者
   - 担当
@@ -81,7 +81,7 @@ Cloud Firestoreのデータ構造↓↓
 
 はじめは説明と実装から理解してもらうことを意識した。
 
-その後は、弓削・福田はWebにあるFlutterのWidgetチュートリアルをして、山﨑はFlutterでBluetoothを扱う方法を調査した。
+その後は、YG・FKはWebにあるFlutterのWidgetチュートリアルをして、YMはFlutterでBluetoothを扱う方法を調査した。
 
 #### クラスモデル設計
 使用するBluetoothパッケージを決定後、クラスモデルを設計した。
